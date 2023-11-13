@@ -46,7 +46,7 @@ const generateRandom = (items,max) => {
     const array = []
     const randomPicks = []
 
-    for (let index = 0; index < max; index++) {
+    for (let index = 1; index <= max; index++) {
         array.push(index)
     }
 
@@ -73,7 +73,7 @@ const generateGame = () => {
     for (let index = 0; index < (dimensions * dimensions); index++) {
         var elem = document.querySelector('.card-back'+( '00' + index ).slice( -2 ))
         elem.innerText=items[index]
-        if(items[index]==0){
+        if(items[index]==1){
             elem.style.background = 'url(./pfp/0-0001.png) round';
         }else{
             elem.style.background = 'url(./pfp/1-' + ('0000' + (items[index]-1)).slice(-4) + '.png) round';
