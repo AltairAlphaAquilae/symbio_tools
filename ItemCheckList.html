@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #222222;
+      font-family: Arial;
+    }
+
+    button {
+      margin: 0 0 1em 0.5em;
+    }
+
+    table {
+      border-collapse: collapse;
+
+    }
+
+    th {
+      color: black;
+      background: rgb(180, 180, 180);
+      cursor: pointer;
+    }
+
+    th.sort-asc::after {
+      content: '↓';
+    }
+
+    th.sort-desc::after {
+      content: '↑';
+    }
+
+    td {
+      color: white;
+      padding: 10px;
+      border-bottom: 1px solid lightgray;
+      vertical-align: top;
+    }
+
+    h1 {
+      color: #ffffff;
+      font-size: 50px;
+      word-break: break-all;
+    }
+
+    h2 {
+      color: yellowgreen;
+      font-size: 25px;
+      word-break: break-all;
+    }
+
+    h4 {
+      color: #ffffff;
+      font-size: 15px;
+      word-break: normal;
+    }
+
+    a:visited {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MAIN (Center website) -->
+
+  <h1>Symbiogenesis Item Check List</h1>
+  <h2>Request for Donations: If you think this site is helpful, please allocate SP to Carnation's Memory Slot or Story
+    Slot.</h2>
+  <h2><a href="./assets/Carnation.png">Carnation is here.</a></h2>
+  <h2>Thank you!</h2>
+
+  <a href='./ItemCheckList.html'>
+    <h4>EN</h4>
+  </a>
+  <a href='./ItemCheckListJp.html'>
+    <h4>JP</h4>
+  </a>
+  <hr>
+  <h4 id="updated">Last Updated: - </h4>
+  <br>
+  <button id="remove-btn">Reset All Check</button>
+  <table>
+    <tr>
+      <td>World Tree Talisman -If-</td>
+      <td><input name="itemcheck" id="0" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Power Source: EVB Cylinder</td>
+      <td><input name="itemcheck" id="1" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Red Sword -Homura-</td>
+      <td><input name="itemcheck" id="2" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Ancient Text Decoder</td>
+      <td><input name="itemcheck" id="3" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Conservator's Bracelet</td>
+      <td><input name="itemcheck" id="4" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Jeweled Key</td>
+      <td><input name="itemcheck" id="5" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Jack's Dice</td>
+      <td><input name="itemcheck" id="6" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Photo of a Dragon</td>
+      <td><input name="itemcheck" id="7" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Land of Salvation Wine</td>
+      <td><input name="itemcheck" id="8" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Wealthy Merchant's Diary</td>
+      <td><input name="itemcheck" id="9" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Dragon Tarot Cards -Shrine Maiden-</td>
+      <td><input name="itemcheck" id="10" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Universal File</td>
+      <td><input name="itemcheck" id="11" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Ancient Text</td>
+      <td><input name="itemcheck" id="12" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Rhizanthella</td>
+      <td><input name="itemcheck" id="13" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Underground Flower Petal</td>
+      <td><input name="itemcheck" id="14" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Cliff Potato</td>
+      <td><input name="itemcheck" id="15" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Carpenter Kit</td>
+      <td><input name="itemcheck" id="16" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Salvation Ruins Stone Slab Fragment</td>
+      <td><input name="itemcheck" id="17" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Beast Vellum</td>
+      <td><input name="itemcheck" id="18" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Salve</td>
+      <td><input name="itemcheck" id="19" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Unknown Chip</td>
+      <td><input name="itemcheck" id="20" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Lab Distillation Fluid</td>
+      <td><input name="itemcheck" id="21" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Medical Compendium</td>
+      <td><input name="itemcheck" id="22" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Gemstone Amber</td>
+      <td><input name="itemcheck" id="23" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Inferior Amber</td>
+      <td><input name="itemcheck" id="24" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Guards’ Armband</td>
+      <td><input name="itemcheck" id="25" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Land of Salvation Newspaper</td>
+      <td><input name="itemcheck" id="26" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Monster Storybook</td>
+      <td><input name="itemcheck" id="27" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Merchant Knife</td>
+      <td><input name="itemcheck" id="28" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Energy Quantum Fiber</td>
+      <td><input name="itemcheck" id="29" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Crimson Amulet</td>
+      <td><input name="itemcheck" id="30" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Foreign Loupe</td>
+      <td><input name="itemcheck" id="31" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Broken Binoculars</td>
+      <td><input name="itemcheck" id="32" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Hunting Trap</td>
+      <td><input name="itemcheck" id="33" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>Silver Salt</td>
+      <td><input name="itemcheck" id="34" type="checkbox"></td>
+    </tr>
+
+  </table>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+
+      var storage = window.localStorage;
+      var lastUpdated = storage.getItem("ItmChkLstUdt");
+      var updated = document.getElementById("updated");
+      var checkedItemsStr = storage.getItem("chckdItm");
+      let checkedItems = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0".split(',');
+      if (lastUpdated == null) {
+        updated.innerHTML = "Last Updated: -";
+      } else {
+        updated.innerHTML = "Last Updated:" + lastUpdated;
+      }
+      if (checkedItemsStr != null) {
+        checkedItems = checkedItemsStr.split(',');
+      }
+
+      const item = document.getElementsByName('itemcheck');
+      const removeBtn = document.getElementById('remove-btn');
+      removeBtn.addEventListener('click', removeFunc, false);
+      for (let i = 0; i < item.length; i++) {
+        item[i].addEventListener('change', valueChange);
+        if (checkedItems[i] == '1') {
+          item[i].checked = true;
+        }
+      }
+
+      function removeFunc() {
+        for (let i = 0; i < item.length; i++) {
+          item[i].checked = false;
+          checkedItems[i] = '0';
+        }
+        updateDate();
+        storage.setItem("chckdItm", checkedItems.join(','));
+      }
+      function updateDate() {
+        var date = new Date();
+        var updated = document.getElementById("updated");
+        updated.innerHTML = "Last Updated:" + date;
+        storage.setItem("ItmChkLstUdt", date);
+      }
+      function valueChange(e) {
+        updateDate();
+        console.log(e.srcElement.id);
+        if (e.srcElement.checked) {
+          checkedItems[Number(e.srcElement.id)] = '1';
+        }
+        else {
+          checkedItems[Number(e.srcElement.id)] = '0';
+        }
+        storage.setItem("chckdItm", checkedItems.join(','));
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
