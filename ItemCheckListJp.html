@@ -239,9 +239,9 @@
       var checkedItemsStr = storage.getItem("chckdItm");
       let checkedItems = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0".split(',');
       if (lastUpdated == null) {
-        updated.innerHTML = "Last Updated: -";
+        updated.innerHTML = "最終更新日時: -";
       } else {
-        updated.innerHTML = "Last Updated:" + lastUpdated;
+        updated.innerHTML = "最終更新日時:" + lastUpdated;
       }
       if (checkedItemsStr != null) {
         checkedItems = checkedItemsStr.split(',');
