@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #222222;
+            font-family: Arial;
+        }
+
+        button {
+            margin: 0 0 1em 0.5em;
+        }
+
+        table {
+            border-collapse: collapse;
+
+        }
+
+        th {
+            color: black;
+            background: rgb(180, 180, 180);
+            cursor: pointer;
+        }
+
+        th.sort-asc::after {
+            content: '↓';
+        }
+
+        th.sort-desc::after {
+            content: '↑';
+        }
+
+        td {
+            color: white;
+            padding: 10px;
+            border-bottom: 1px solid lightgray;
+            vertical-align: top;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 50px;
+            word-break: break-all;
+        }
+
+        h2 {
+            color: yellowgreen;
+            font-size: 25px;
+            word-break: break-all;
+        }
+
+        h4 {
+            color: #ffffff;
+            font-size: 15px;
+            word-break: normal;
+        }
+
+        a:visited {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MAIN (Center website) -->
+
+    <h1>Symbiogenesis Item Check List</h1>
+    <h2>ご協力のお願い: もしこのサイトがお役に立てたら、CarnationのMemory Slot か Story SlotにSP割当をお願いします！</h2>
+    <h2><a href="./assets/Carnation.png">Carnationはここにいます.</a></h2>
+    <h2>よろしくお願いします！</h2>
+
+    <a href='./ItemCheckList.html'>
+        <h4>EN</h4>
+    </a>
+    <a href='./ItemCheckListJp.html'>
+        <h4>JP</h4>
+    </a>
+    <hr>
+    <h4 id="updated">最終更新日時: - </h4>
+    <br>
+    <button id="remove-btn">すべて外す</button>
+    <br>
+    <input id="authtoken">
+    <br>
+    <input id="x">
+    <br>
+    <input id="y">
+    <table>
+        <tr>
+            <th>アイテム名</th>
+            <th>チェック欄</th>
+        </tr>
+
+        <tr>
+            <td>世界樹のタリスマン『イフ』</td>
+            <td><input name="itemcheck" id="0" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>動力源：EVBシリンダー</td>
+            <td><input name="itemcheck" id="1" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>赤刀-焔-</td>
+            <td><input name="itemcheck" id="2" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>古文解読書</td>
+            <td><input name="itemcheck" id="3" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>救世主の腕輪</td>
+            <td><input name="itemcheck" id="4" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>ジュエル・キー</td>
+            <td><input name="itemcheck" id="5" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>ジャックのサイコロ</td>
+            <td><input name="itemcheck" id="6" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>竜の写真</td>
+            <td><input name="itemcheck" id="7" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>救国ワイン</td>
+            <td><input name="itemcheck" id="8" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>豪商の日記</td>
+            <td><input name="itemcheck" id="9" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>竜信仰のタロットカード-巫女-</td>
+            <td><input name="itemcheck" id="10" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>万能やすり</td>
+            <td><input name="itemcheck" id="11" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>古文書</td>
+            <td><input name="itemcheck" id="12" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>リザンテラ</td>
+            <td><input name="itemcheck" id="13" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>地下花の花弁</td>
+            <td><input name="itemcheck" id="14" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>崖芋</td>
+            <td><input name="itemcheck" id="15" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>大工の七つ道具</td>
+            <td><input name="itemcheck" id="16" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>救国遺跡の石板の欠片</td>
+            <td><input name="itemcheck" id="17" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>獣のベラム</td>
+            <td><input name="itemcheck" id="18" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>塗薬</td>
+            <td><input name="itemcheck" id="19" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>アンノウンズチップ</td>
+            <td><input name="itemcheck" id="20" type="checkbox"></td>
+            <td><button id="click-20">すべて外す</button></td>
+
+        </tr>
+        <tr>
+            <td>研究所の乾留液</td>
+            <td><input name="itemcheck" id="21" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>医術大全</td>
+            <td><input name="itemcheck" id="22" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>宝石琥珀</td>
+            <td><input name="itemcheck" id="23" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>下級琥珀</td>
+            <td><input name="itemcheck" id="24" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>防人の腕章</td>
+            <td><input name="itemcheck" id="25" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>救国新聞</td>
+            <td><input name="itemcheck" id="26" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>巨獣物語の絵本</td>
+            <td><input name="itemcheck" id="27" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>マーチャントナイフ</td>
+            <td><input name="itemcheck" id="28" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>エネルギー量子ファイバー</td>
+            <td><input name="itemcheck" id="29" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>真紅のアミュレット</td>
+            <td><input name="itemcheck" id="30" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>異郷のルーペ</td>
+            <td><input name="itemcheck" id="31" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>壊れた双眼鏡</td>
+            <td><input name="itemcheck" id="32" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>狩人式トラップ</td>
+            <td><input name="itemcheck" id="33" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>銀砂の塩</td>
+            <td><input name="itemcheck" id="34" type="checkbox"></td>
+        </tr>
+
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+            var storage = window.localStorage;
+            var lastUpdated = storage.getItem("ItmChkLstUdt");
+            var updated = document.getElementById("updated");
+            var checkedItemsStr = storage.getItem("chckdItm");
+            let checkedItems = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0".split(',');
+            if (lastUpdated == null) {
+                updated.innerHTML = "最終更新日時: -";
+            } else {
+                updated.innerHTML = "最終更新日時:" + lastUpdated;
+            }
+            if (checkedItemsStr != null) {
+                checkedItems = checkedItemsStr.split(',');
+            }
+
+            const item = document.getElementsByName('itemcheck');
+            const removeBtn = document.getElementById('remove-btn');
+            removeBtn.addEventListener('click', removeFunc, false);
+            for (let i = 0; i < item.length; i++) {
+                item[i].addEventListener('change', valueChange);
+                if (checkedItems[i] == '1') {
+                    item[i].checked = true;
+                }
+            }
+
+            const click20 = document.getElementById('click-20');
+            click20.addEventListener('click', click20Func, false);
+            function click20Func() {
+                console.log('Bearer '+ document.querySelector('input').value)
+                var _data = '{"action":"click","position":{"x":'+document.querySelector('x').value+',"y":'+document.querySelector('y').value+',"z":325},"isViewMode":true}';
+                $.ajax({
+                    url: 'https://api.symbiogenesis.app/map/action',
+                    headers: {
+                        'authorization': 'Bearer '+ document.querySelector('input').value,
+                        'accept':'application/json, text/plain, */*',
+                    },
+                    type: 'POST',
+                    origin:'https://symbiogenesis.app',
+                    contentType: 'application/json',
+                    Connection:'keep-alive',
+                    data: _data,
+                    dataType: 'json',
+                    crossDomain: true,
+                    cache: false,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    success:function(result){console.log(result)},
+                    error:function(error){console.log(error)},
+                });
+            }
+
+            function removeFunc() {
+                for (let i = 0; i < item.length; i++) {
+                    item[i].checked = false;
+                    checkedItems[i] = '0';
+                }
+                updateDate();
+                storage.setItem("chckdItm", checkedItems.join(','));
+            }
+            function updateDate() {
+                var date = new Date();
+                var updated = document.getElementById("updated");
+                updated.innerHTML = "最終更新日時:" + date;
+                storage.setItem("ItmChkLstUdt", date);
+            }
+            function valueChange(e) {
+                updateDate();
+                console.log(e.srcElement.id);
+                if (e.srcElement.checked) {
+                    checkedItems[Number(e.srcElement.id)] = '1';
+                }
+                else {
+                    checkedItems[Number(e.srcElement.id)] = '0';
+                }
+                storage.setItem("chckdItm", checkedItems.join(','));
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
