@@ -269,8 +269,8 @@
             const click20 = document.getElementById('click-20');
             click20.addEventListener('click', click20Func, false);
             function click20Func() {
-                console.log('Bearer '+ document.querySelector('input').value)
-                var _data = '{"action":"click","position":{"x":'+document.querySelector('x').value+',"y":'+document.querySelector('y').value+',"z":325},"isViewMode":true}';
+                console.log('Bearer '+ document.querySelector('input#authtoken').value)
+                var _data = '{"action":"click","position":{"x":'+document.querySelector('input#x').value+',"y":'+document.querySelector('input#y').value+',"z":325},"isViewMode":true}';
                 $.ajax({
                     url: 'https://api.symbiogenesis.app/map/action',
                     headers: {
