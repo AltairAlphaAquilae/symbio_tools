@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+    body {
+      background-color: #222222;
+      font-family: Arial;
+    }
+      button {
+        margin: 0 0 1em 0.5em;
+      }
+      table {
+          border-collapse: collapse;
+	  
+      }
+      th {
+        color: black;
+        background: rgb(180,180,180);
+        cursor: pointer;
+      }
+      th.sort-asc::after {
+        content: '↓';
+      }
+      th.sort-desc::after {
+        content: '↑';
+      }
+      td {
+        color: white;
+        padding: 10px;
+        border-bottom: 1px solid lightgray;
+        vertical-align: top;
+      }
+    h1 {
+      color: #ffffff;
+      font-size: 50px;
+      word-break: break-all;
+    }
+    h2 {
+      color:yellowgreen;
+      font-size: 25px;
+      word-break: break-all;
+    }
+        h4 {
+      color: #ffffff;
+      font-size: 15px;
+      word-break: normal;
+    }
+    a:visited {
+      color:white;
+}
+    </style>
+</head>
+
+<body>
+
+  <!-- MAIN (Center website) -->
+
+  <h1>Symbiogenesis Unlocked Story Slot (Affiliation Specific) (Updated at 2024-01-03 00:49:22 UTC)</h1>
+  <h2>Request for Donations: If you think this site is helpful, please allocate SP to Carnation's Memory Slot or Story Slot.</h2>
+  <h2><a href="./assets/Carnation.png">Carnation is here.</a></h2>
+  <h2>Thank you!</h2>
+  
+  <a href='./AffSlot.html'><h4>EN</h4></a>
+  <a href='./AffSlotJp.html'><h4>JP</h4></a>
+    <hr>
+    <table>
+      <tr><th>Name</th><th>Affiliation</th><th>Title</th></tr>
+      <tr><td>Newt</td><td>The Salvation Corps</td><td>The Misfortunes of New Conservator Newt</td></tr><tr><td>Greeting</td><td>The Salvation Corps</td><td>[Memories of Collega, the Aide: September
+24]</td></tr><tr><td>Date</td><td>The Salvation Corps</td><td>[Memories of Collega, the Aide: July 17]</td></tr><tr><td>Canna</td><td>The Continental Survey Force</td><td>[Memoirs of Navigatio, Captain of 
+Floating Continent Expeditionary
+Force - Fourth Squad, Day 125]</td></tr><tr><td>Beard</td><td>The Continental Survey Force</td><td>[Memories of the Mercenary's Assault Chapter 3]</td></tr><tr><td>Tamarack</td><td>The Continental Survey Force</td><td>[Memoirs of Navigatio, Captain of 
+Floating Continent Expeditionary
+Force - Fourth Squad, Day 125]</td></tr><tr><td>Adonis</td><td>Researchers</td><td>Misgivings of Lab Head Adonis</td></tr><tr><td>Thistle</td><td>Researchers</td><td>[Memories of Hacker Device Chapter 1]</td></tr><tr><td>Iris</td><td>Researchers</td><td>[Memories of Hacker Device Chapter 5]</td></tr><tr><td>Conclusion</td><td>Public Servants</td><td>[Memoirs of Navigatio, Captain of 
+Floating Continent Expeditionary
+Force - Fourth Squad, Day 124]</td></tr><tr><td>Decision</td><td>Public Servants</td><td>[Memoirs of Navigatio, Captain of 
+Floating Continent Expeditionary
+Force - Fourth Squad, Day 124]</td></tr><tr><td>Spade</td><td>Adventurers</td><td>[Memoirs of Navigatio, Captain of 
+Floating Continent Expeditionary
+Force - Fourth Squad, Day 127]</td></tr><tr><td>Tango</td><td>Adventurers</td><td>[Memoirs of Navigatio, Captain of 
+Floating Continent Expeditionary
+Force - Fourth Squad, Day 130]</td></tr><tr><td>Coffee</td><td>Tavern</td><td>[Liber the Storyteller's "Lore of the
+Floating Continent," Section 3]</td></tr><tr><td>Pepper</td><td>Farmers</td><td>[Memories of Winery Fragrance Chapter 6]</td></tr><tr><td>Tea</td><td>Tavern</td><td>[Liber the Storyteller's "Lore of the
+Floating Continent," Section 3]</td></tr><tr><td>Ringtail</td><td>Carpenters</td><td>[Memories of Peacock the Soldier]</td></tr><tr><td>Meaning</td><td>Students</td><td>[Memories of the Orphan, Son Chapter 1]</td></tr><tr><td>Verse</td><td>Students</td><td>[Liber the Storyteller's "Lore of the
+Floating Continent," Section 9]</td></tr><tr><td>Archery</td><td>Hunters</td><td>[Memories of Beta]</td></tr><tr><td>Wart</td><td>The Smithy</td><td>Wart's Invention in the Smithy</td></tr><tr><td>Vese</td><td>The Smithy</td><td>[Liber the Storyteller's "Lore of the
+Floating Continent," Section 9]</td></tr><tr><td>Paper</td><td>The Smithy</td><td>[Liber the Storyteller's "Lore of the
+Floating Continent," Section 9]</td></tr><tr><td>Bell</td><td>The Smithy</td><td>[Liber the Storyteller's "Lore of the
+Floating Continent," Section 9]</td></tr><tr><td>Tightrope</td><td>Dojo</td><td>[Memories of Beta]</td></tr>
+    </table>
+
+    <script>
+      initialize();
+  
+      function initialize() {
+        const body = document.querySelector('body');
+        const table = document.querySelector('table');
+  
+        const input = document.createElement('input');
+        input.addEventListener('keypress', () => {
+          if (event.key === 'Enter') filterRows();
+        });
+        body.insertBefore(input, table);
+  
+        const button = document.createElement('button');
+        button.textContent = 'RegExp Search';
+        button.onclick = filterRows;
+        body.insertBefore(button, table);
+  
+        document.querySelectorAll('th').forEach(th => th.onclick = sortRows);
+        document.querySelector('th').classList.add('sort-asc');
+      }
+  
+      function filterRows() {
+        const keyword = document.querySelector('input').value;
+        const regex = new RegExp(keyword, 'i');
+        const table = document.querySelector('table');
+        for (let i = 1; i < table.rows.length; i++) {
+          const row = table.rows[i];
+          row.style.display = 'none';
+          for (let j = 0; j < row.cells.length; j++) {
+            if (row.cells[j].textContent.match(regex)) {
+              row.style.display = 'table-row';
+              break;
+            }
+          }
+        }
+      }
+  
+      function sortRows() {
+        const table = document.querySelector("table");
+        const records = [];
+        for (let i = 1; i < table.rows.length; i++) {
+          const record = {};
+          record.row = table.rows[i];
+          record.key = table.rows[i].cells[this.cellIndex].textContent;
+          records.push(record);
+        }
+        if (this.classList.contains('sort-asc')) {
+          if (this.classList.contains('num')) {
+            records.sort(compareKeysNumReverse);
+            purgeSortMarker();
+            this.classList.add('sort-desc');
+          } else {
+            records.sort(compareKeysReverse);
+            purgeSortMarker();
+            this.classList.add('sort-desc');
+          }
+        } else {
+          if (this.classList.contains('num')) {
+            records.sort(compareKeysNum);
+            purgeSortMarker();
+            this.classList.add('sort-asc');
+          } else {
+            records.sort(compareKeys);
+            purgeSortMarker();
+            this.classList.add('sort-asc');
+          }
+        }
+        for (let i = 0; i < records.length; i++) {
+          table.appendChild(records[i].row);
+        }
+      }
+  
+      function purgeSortMarker() {
+        document.querySelectorAll('th').forEach(th => {
+          th.classList.remove('sort-asc');
+          th.classList.remove('sort-desc');
+        });
+      }
+  
+      function compareKeys(a, b) {
+        if (a.key < b.key) return -1;
+        if (a.key > b.key) return 1;
+        return 0;
+      }
+  
+      function compareKeysReverse(a, b) {
+        if (a.key < b.key) return 1;
+        if (a.key > b.key) return -1;
+        return 0;
+      }
+      function compareKeysNum(a, b) {
+        if (Number(a.key) < Number(b.key)) return -1;
+        if (Number(a.key) > Number(b.key)) return 1;
+        return 0;
+      }
+      function compareKeysNumReverse(a, b) {
+        if (Number(a.key) < Number(b.key)) return 1;
+        if (Number(a.key) > Number(b.key)) return -1;
+        return 0;
+      }
+    </script>
+
+</body>
+
+</html>

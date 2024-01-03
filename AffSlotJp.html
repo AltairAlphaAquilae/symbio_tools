@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+    body {
+      background-color: #222222;
+      font-family: Arial;
+    }
+      button {
+        margin: 0 0 1em 0.5em;
+      }
+      table {
+          border-collapse: collapse;
+	  
+      }
+      th {
+        color: black;
+        background: rgb(180,180,180);
+        cursor: pointer;
+      }
+      th.sort-asc::after {
+        content: '↓';
+      }
+      th.sort-desc::after {
+        content: '↑';
+      }
+      td {
+        color: white;
+        padding: 10px;
+        border-bottom: 1px solid lightgray;
+        vertical-align: top;
+      }
+    h1 {
+      color: #ffffff;
+      font-size: 50px;
+      word-break: break-all;
+    }
+    h2 {
+      color:yellowgreen;
+      font-size: 25px;
+      word-break: break-all;
+    }
+        h4 {
+      color: #ffffff;
+      font-size: 15px;
+      word-break: normal;
+    }
+    a:visited {
+      color:white;
+}
+    </style>
+</head>
+
+<body>
+
+  <!-- MAIN (Center website) -->
+
+  <h1>Symbiogenesis Unlocked Story Slot (Affiliation Specific) List (Updated at 2024-01-03 00:49:22 UTC)</h1>
+  <h2>ご協力のお願い: もしこのサイトがお役に立てたら、CarnationのMemory Slot か Story SlotにSP割当をお願いします！</h2>
+  <h2><a href="./assets/Carnation.png">Carnationはここにいます.</a></h2>
+  <h2>よろしくお願いします！</h2>
+  
+  <a href='./AffSlot.html'><h4>EN</h4></a>
+  <a href='./AffSlotJp.html'><h4>JP</h4></a>
+    <hr>
+    <table>
+      <tr><th>名前</th><th>所属</th><th>タイトル</th></tr>
+      <tr><td>Newt</td><td>救国兵団</td><td>新救世主『Newt』の不幸</td></tr><tr><td>Greeting</td><td>救国兵団</td><td>【補佐官Collegaの記憶：9月24日】#04</td></tr><tr><td>Date</td><td>救国兵団</td><td>【補佐官Collegaの記憶：7月17日】#08</td></tr><tr><td>Canna</td><td>大陸調査部隊</td><td>【浮遊大陸探索部隊第四班隊長Navigatioの手記 125日目】#12</td></tr><tr><td>Beard</td><td>大陸調査部隊</td><td>【傭兵Assaultの記憶 第三章】#04</td></tr><tr><td>Tamarack</td><td>大陸調査部隊</td><td>【浮遊大陸探索部隊第四班隊長Navigatioの手記 125日目】#11</td></tr><tr><td>Adonis</td><td>研究員</td><td>ラボ長『Adonis』の疑念</td></tr><tr><td>Thistle</td><td>研究員</td><td>【ハッカーDeviceの記憶 第一章】#07</td></tr><tr><td>Iris</td><td>研究員</td><td>【ハッカーDeviceの記憶 第五章】#01</td></tr><tr><td>Conclusion</td><td>公人</td><td>【浮遊大陸探索部隊第四班隊長Navigatioの手記 124日目】#02</td></tr><tr><td>Decision</td><td>公人</td><td>【浮遊大陸探索部隊第四班隊長Navigatioの手記 124日目】#01</td></tr><tr><td>Spade</td><td>探検家</td><td>【浮遊大陸探索部隊第四班隊長Navigatioの手記 127日目】#08</td></tr><tr><td>Tango</td><td>探検家</td><td>【浮遊大陸探索部隊第四班隊長Navigatioの手記 130日目】#08</td></tr><tr><td>Coffee</td><td>酒場</td><td>【語り部Liberの「浮遊大陸伝承」 第三節】#04</td></tr><tr><td>Pepper</td><td>農家</td><td>【ワイナリーFragranceの記憶 第六章】#10</td></tr><tr><td>Tea</td><td>酒場</td><td>【語り部Liberの「浮遊大陸伝承」 第三節】#03</td></tr><tr><td>Ringtail</td><td>大工</td><td>【兵士Peacockの記憶】#04</td></tr><tr><td>Meaning</td><td>学生</td><td>【孤児Sonの記憶 第一章】#02</td></tr><tr><td>Verse</td><td>学生</td><td>【語り部Liberの「浮遊大陸伝承」 第九節】#03</td></tr><tr><td>Archery</td><td>狩人</td><td>【Betaの記憶】#125</td></tr><tr><td>Wart</td><td>鍛冶屋</td><td>鍛冶屋の匠『Wart』の発明</td></tr><tr><td>Vese</td><td>鍛冶屋</td><td>【語り部Liberの「浮遊大陸伝承」 第九節】#12</td></tr><tr><td>Paper</td><td>鍛冶屋</td><td>【語り部Liberの「浮遊大陸伝承」 第九節】#13</td></tr><tr><td>Bell</td><td>鍛冶屋</td><td>【語り部Liberの「浮遊大陸伝承」 第九節】#11</td></tr><tr><td>Tightrope</td><td>道場</td><td>【Betaの記憶】#133</td></tr>
+    </table>
+
+    <script>
+        initialize();
+    
+        function initialize() {
+          const body = document.querySelector('body');
+          const table = document.querySelector('table');
+    
+          const input = document.createElement('input');
+          input.addEventListener('keypress', () => {
+            if (event.key === 'Enter') filterRows();
+          });
+          body.insertBefore(input, table);
+    
+          const button = document.createElement('button');
+          button.textContent = '正規表現検索';
+          button.onclick = filterRows;
+          body.insertBefore(button, table);
+    
+          document.querySelectorAll('th').forEach(th => th.onclick = sortRows);
+          document.querySelector('th').classList.add('sort-asc');
+        }
+    
+        function filterRows() {
+          const keyword = document.querySelector('input').value;
+          const regex = new RegExp(keyword, 'i');
+          const table = document.querySelector('table');
+          for (let i = 1; i < table.rows.length; i++) {
+            const row = table.rows[i];
+            row.style.display = 'none';
+            for (let j = 0; j < row.cells.length; j++) {
+              if (row.cells[j].textContent.match(regex)) {
+                row.style.display = 'table-row';
+                break;
+              }
+            }
+          }
+        }
+    
+        function sortRows() {
+          const table = document.querySelector("table");
+          const records = [];
+          for (let i = 1; i < table.rows.length; i++) {
+            const record = {};
+            record.row = table.rows[i];
+            record.key = table.rows[i].cells[this.cellIndex].textContent;
+            records.push(record);
+          }
+          if (this.classList.contains('sort-asc')) {
+            if (this.classList.contains('num')) {
+              records.sort(compareKeysNumReverse);
+              purgeSortMarker();
+              this.classList.add('sort-desc');
+            } else {
+              records.sort(compareKeysReverse);
+              purgeSortMarker();
+              this.classList.add('sort-desc');
+            }
+          } else {
+            if (this.classList.contains('num')) {
+              records.sort(compareKeysNum);
+              purgeSortMarker();
+              this.classList.add('sort-asc');
+            } else {
+              records.sort(compareKeys);
+              purgeSortMarker();
+              this.classList.add('sort-asc');
+            }
+          }
+          for (let i = 0; i < records.length; i++) {
+            table.appendChild(records[i].row);
+          }
+        }
+    
+        function purgeSortMarker() {
+          document.querySelectorAll('th').forEach(th => {
+            th.classList.remove('sort-asc');
+            th.classList.remove('sort-desc');
+          });
+        }
+    
+        function compareKeys(a, b) {
+          if (a.key < b.key) return -1;
+          if (a.key > b.key) return 1;
+          return 0;
+        }
+    
+        function compareKeysReverse(a, b) {
+          if (a.key < b.key) return 1;
+          if (a.key > b.key) return -1;
+          return 0;
+        }
+        function compareKeysNum(a, b) {
+          if (Number(a.key) < Number(b.key)) return -1;
+          if (Number(a.key) > Number(b.key)) return 1;
+          return 0;
+        }
+        function compareKeysNumReverse(a, b) {
+          if (Number(a.key) < Number(b.key)) return 1;
+          if (Number(a.key) > Number(b.key)) return -1;
+          return 0;
+        }
+      </script>
+
+</body>
+
+</html>
