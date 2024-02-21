@@ -150,6 +150,7 @@ const flipCard = card => {
 
             clearInterval(state.loop)
         }, 1000)
+        selectors.boardContainer.classList.remove('flipped')
     }
 }
 
