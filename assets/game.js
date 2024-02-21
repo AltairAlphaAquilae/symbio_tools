@@ -68,17 +68,13 @@ const generateGame = () => {
         throw new Error("The dimension of the board must be an even number.")
     }
 
-    const picks = generateRandom((dimensions * dimensions) / 2,501) 
+    const picks = generateRandom((dimensions * dimensions) / 2,44) 
     const items = shuffle([...picks, ...picks])
 
     for (let index = 0; index < (dimensions * dimensions); index++) {
         var elem = document.querySelector('.card-back'+( '00' + index ).slice( -2 ))
         elem.innerText=items[index]
-        if(items[index]==1){
-            elem.style.background = 'url(./pfp/0-0001.png) round';
-        }else{
-            elem.style.background = 'url(./pfp/1-' + ('0000' + (items[index]-1)).slice(-4) + '.png) round';
-        }
+        elem.style.background = 'url(./items/' + items[index] + '.png) round';
     }
 //    const cards = `
 //        <div class="board" style="grid-template-columns: repeat(${dimensions}, auto)">
@@ -98,7 +94,7 @@ const generateGame = () => {
 
 const startGame = () => {
     state.gameStarted = true
-
+    selectors.boardContainer.classList.remove('flipped')
     state.loop = setInterval(() => {
         state.totalTime++
 
