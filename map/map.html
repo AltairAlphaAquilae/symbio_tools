@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Custom Map</title>
+  <script>
+    (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
+      key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
+      v: "weekly",
+      // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+      // Add other bootstrap parameters as needed, using camel case.
+    });
+  </script>
+  <style>
+    #map {
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    async function initMap() {
+      function Grid(size) {
+        this.tileSize = size;
+      }
+
+      const { Map } = await google.maps.importLibrary("maps");
+      const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
+        "marker",
+      );
+
+      Grid.prototype.name = 'Symbio Map';  // 追加
+      Grid.prototype.minZoom = 3;
+      Grid.prototype.maxZoom = 7;
+      Grid.prototype.getTile = function (coord, zoom, ownerDocument) {
+        var div = ownerDocument.createElement('div');
+        div.style.width = this.tileSize.width + 'px';
+        div.style.height = this.tileSize.height + 'px';
+        div.style.borderStyle = 'solid';
+        div.style.borderWidth = '1px';
+        if (zoom == 7) {
+          div.innerHTML = "<span style='color: red;font-weight:bold;font-size: 18px;'>" + coord + "</span>";
+        }
+        return div;
+      };
+
+
+
+      var imageMap = new google.maps.ImageMapType({
+        // 各zoomレベル、タイル座標に対して表示させる画像を返す
+        getTileUrl: function (coord, zoom) {
+          zoom = zoom - 1;
+          var tileRange = 1 << zoom;
+          if (coord.y < 0 || coord.y >= tileRange || coord.x < 0 || coord.x >= tileRange) {
+            return null;
+          }
+          return './asset/' +
+            '/' + zoom + '/tile_' + coord.x + '_' +
+            coord.y + '.jpg';
+        },
+        tileSize: new google.maps.Size(450, 450),// タイルのサイズ（px）を指定
+        minZoom: 3, // 最大のzoomレベル
+        maxZoom: 7, // 最大のzoomレベル
+      });
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 3, // 初期zoomレベルを指定
+        center: { lat: 40, lng:-20 },
+        mapTypeId: 'image_map',
+        streetViewControl: false,
+        mapTypeControlOptions: {
+          mapTypeIds: [],
+        },
+        mapId: "DEMO_MAP_ID"
+      });
+
+      map.overlayMapTypes.insertAt(0, new Grid(new google.maps.Size(450, 450)));
+      map.mapTypes.set('image_map', imageMap);
+
+      //mapをクリックしたときのイベントを設定
+      google.maps.event.addListener(map, 'click', markNoItem);
+
+      //mapをクリックしたときのイベントを設定
+      google.maps.event.addListener(map, 'rightclick', markItem);
+
+      //クリックしたときの処理
+      function markNoItem(event) {
+        //marker作成
+        var marker = new google.maps.marker.AdvancedMarkerElement({
+          map,
+          position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+          title: "No Item"
+        });
+        // Add a click listener for each marker, and set up the info window.
+        marker.addListener("click", ({ domEvent, latLng }) => {
+          marker.setMap(null);
+          marker = null;
+        });
+
+      }
+      //クリックしたときの処理
+      function markItem(event) {
+        //marker作成
+        // Change the background color.
+        const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
+        var marker = new google.maps.marker.AdvancedMarkerElement({
+          map,
+          position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+          title: "Item is Here!",
+          content: pinViewBackground.element
+        });
+        // Add a click listener for each marker, and set up the info window.
+        marker.addListener("click", ({ domEvent, latLng }) => {
+          marker.setMap(null);
+          marker = null;
+        });
+
+      }
+    }
+    initMap();
+  </script>
+</body>
+
+</html>
