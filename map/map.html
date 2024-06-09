@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Custom Map</title>
+  <title>Symbio Treasure Hunting Recorder</title>
   <script>
     (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
       key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
@@ -21,6 +21,39 @@
 <body>
   <div id="map"></div>
   <script>
+    var newMarkersElement = [];
+    var MarkersElement = [];
+    function markerClick(marker) {
+      switch (marker.zIndex) {
+        case 0:
+          const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
+          marker.content = pinViewBackground.element;
+          marker.zIndex = 1;
+          // 情報ウィンドウ（吹き出し）の設定
+          var infoWindow = new google.maps.InfoWindow({
+            content: '<input type="text" id="markerTitleInputInfoWindow"><input type="button" id="SaveBtn" value="Submit">'
+          });
+          // 情報ウィンドウを開く
+          infoWindow.open(map, marker);
+          isGoogleDomReady(infoWindow, marker);
+          break;
+        case 1:
+          newMarkersElement = newMarkersElement.filter(newMarkersElement => Number(newMarkersElement.hA.split(':')[0]) !== Number(marker.title.split(':')[0]));
+          marker.setMap(null);
+          marker = null;
+          break;
+      }
+    }
+    function isGoogleDomReady(infoWindow, marker) {
+      google.maps.event.addListener(infoWindow, 'domready', function () {
+        var inputButton = document.getElementById('SaveBtn');
+        var inputText = document.getElementById('markerTitleInputInfoWindow');
+        document.getElementById('SaveBtn').onclick = function () {
+          infoWindow.close();
+          marker.title = marker.title.split(':')[0] + ":" + getDate() + ":" + inputText.value;
+        }
+      });
+    }
     async function initMap() {
       function Grid(size) {
         this.tileSize = size;
@@ -30,7 +63,6 @@
       const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
         "marker",
       );
-
       Grid.prototype.name = 'Symbio Map';  // 追加
       Grid.prototype.minZoom = 3;
       Grid.prototype.maxZoom = 7;
@@ -40,13 +72,11 @@
         div.style.height = this.tileSize.height + 'px';
         div.style.borderStyle = 'solid';
         div.style.borderWidth = '1px';
-        if (zoom == 7) {
+        if (zoom == Grid.prototype.maxZoom) {
           div.innerHTML = "<span style='color: red;font-weight:bold;font-size: 18px;'>" + coord + "</span>";
         }
         return div;
       };
-
-
 
       var imageMap = new google.maps.ImageMapType({
         // 各zoomレベル、タイル座標に対して表示させる画像を返す
@@ -67,7 +97,7 @@
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 3, // 初期zoomレベルを指定
-        center: { lat: 40, lng:-20 },
+        center: { lat: 40, lng: -20 },
         mapTypeId: 'image_map',
         streetViewControl: false,
         mapTypeControlOptions: {
@@ -78,12 +108,32 @@
 
       map.overlayMapTypes.insertAt(0, new Grid(new google.maps.Size(450, 450)));
       map.mapTypes.set('image_map', imageMap);
-
-      //mapをクリックしたときのイベントを設定
+      var storage = window.localStorage;
+      var markersStorage = storage.getItem("Markers");
+      if (markersStorage != null) {
+        markersStorage = JSON.parse(markersStorage)
+        markersStorage.forEach(storedMarker => {
+          const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
+          if (storedMarker.type == 0) {
+            var marker = new google.maps.marker.AdvancedMarkerElement({
+              map,
+              position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
+              title: storedMarker.title,
+              zIndex: storedMarker.zIndex
+            });
+          } else {
+            var marker = new google.maps.marker.AdvancedMarkerElement({
+              map,
+              position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
+              title: storedMarker.title,
+              content: pinViewBackground.element,
+              zIndex: storedMarker.zIndex
+            });
+          }
+          MarkersElement.push(marker);
+        });
+      }
       google.maps.event.addListener(map, 'click', markNoItem);
-
-      //mapをクリックしたときのイベントを設定
-      google.maps.event.addListener(map, 'rightclick', markItem);
 
       //クリックしたときの処理
       function markNoItem(event) {
@@ -91,33 +141,179 @@
         var marker = new google.maps.marker.AdvancedMarkerElement({
           map,
           position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
-          title: "No Item"
-        });
-        // Add a click listener for each marker, and set up the info window.
-        marker.addListener("click", ({ domEvent, latLng }) => {
-          marker.setMap(null);
-          marker = null;
+          title: newMarkersElement.length + ":" + getDate() + ":" + "No Item",
+          zIndex: 0
         });
 
+        newMarkersElement.push(marker);
+        // マーカークリックイベントリスナーの設定
+        marker.addListener('click', function () {
+          markerClick(marker);
+        });
       }
-      //クリックしたときの処理
-      function markItem(event) {
-        //marker作成
-        // Change the background color.
-        const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
-        var marker = new google.maps.marker.AdvancedMarkerElement({
-          map,
-          position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
-          title: "Item is Here!",
-          content: pinViewBackground.element
-        });
-        // Add a click listener for each marker, and set up the info window.
-        marker.addListener("click", ({ domEvent, latLng }) => {
-          marker.setMap(null);
-          marker = null;
-        });
 
+      const centerControlDiv = document.createElement("div");
+      const centerControl = createSubmitButton(map);
+      centerControlDiv.appendChild(centerControl);
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
+      const rightControlDiv = document.createElement("div");
+      const playerName = playerNameButton(map);
+      rightControlDiv.appendChild(playerName);
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(rightControlDiv);
+
+      const bottomLeftControlDiv = document.createElement("div");
+      const clearMarker = clearMarkerButton(map);
+      bottomLeftControlDiv.appendChild(clearMarker);
+      map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(bottomLeftControlDiv);
+
+    }
+
+    function getDate() {
+      let date = new Date();
+      return optDate = date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + ' ' + ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
+    }
+    function createSubmitButton(map) {
+      const controlButton = document.createElement("button");
+
+      // Set CSS for the control.
+      controlButton.style.backgroundColor = "#fff";
+      controlButton.style.border = "2px solid #fff";
+      controlButton.style.borderRadius = "3px";
+      controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+      controlButton.style.color = "rgb(25,25,25)";
+      controlButton.style.cursor = "pointer";
+      controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
+      controlButton.style.fontSize = "16px";
+      controlButton.style.lineHeight = "38px";
+      controlButton.style.margin = "0px 0 0px";
+      controlButton.style.padding = "0 5px";
+      controlButton.style.textAlign = "center";
+      controlButton.textContent = "Submit Markers";
+      controlButton.title = "Click to submit your markers";
+      controlButton.type = "button";
+      controlButton.addEventListener("click", () => {
+        if (newMarkersElement.length > 0) {
+          var storage = window.localStorage;
+          var markersStorage = storage.getItem("Markers");
+          if (markersStorage == null) {
+            markersStorage = [];
+            markersStorage = JSON.stringify(markersStorage)
+            json_base = JSON.parse(markersStorage)
+          } else {
+            json_base = JSON.parse(markersStorage)
+          }
+
+          newMarkersElement.forEach(item => {
+            var json_item = { lat: item.ft.Gg, lng: item.ft.Hg, title: item.hA.slice((item.hA.split(':')[0].length)+1), type: item.Aw };
+            json_add = JSON.parse(JSON.stringify(json_item));
+            json_base.push(json_add);
+            item.setMap(null);
+            item = null
+          });
+
+          storage.setItem("Markers", JSON.stringify(json_base));
+          newMarkersElement = [];
+          MarkersElement = [];
+          var markersStorage = storage.getItem("Markers");
+          if (markersStorage != null) {
+            markersStorage = JSON.parse(markersStorage)
+            markersStorage.forEach(storedMarker => {
+              const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
+              if (storedMarker.type == 0) {
+                var marker = new google.maps.marker.AdvancedMarkerElement({
+                  map,
+                  position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
+                  title: storedMarker.title,
+                  zIndex: storedMarker.zIndex
+                });
+              } else {
+                var marker = new google.maps.marker.AdvancedMarkerElement({
+                  map,
+                  position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
+                  title: storedMarker.title,
+                  content: pinViewBackground.element,
+                  zIndex: storedMarker.zIndex
+                });
+              }
+              MarkersElement.push(marker);
+            });
+          }
+        }
+      });
+      return controlButton;
+    }
+    function playerNameButton(map) {
+      var storage = window.localStorage;
+      var playerName = storage.getItem("playerName");
+      if (playerName == null) {
+        playerName = "";
       }
+
+      const playerNameText = document.createElement("input");
+      // Set CSS for the control.
+      playerNameText.style.backgroundColor = "#fff";
+      playerNameText.style.border = "2px solid #fff";
+      playerNameText.style.borderRadius = "3px";
+      playerNameText.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+      playerNameText.style.color = "rgb(25,25,25)";
+      playerNameText.style.cursor = "pointer";
+      playerNameText.style.fontFamily = "Roboto,Arial,sans-serif";
+      playerNameText.style.fontSize = "16px";
+      playerNameText.style.lineHeight = "38px";
+      playerNameText.style.margin = "8px 0 22px";
+      playerNameText.style.padding = "0 5px";
+      playerNameText.style.textAlign = "center";
+      playerNameText.type = "text"
+      playerNameText.name = "Your Name:"
+      if (playerName == "") {
+        playerNameText.placeholder = "Input Your Name"
+      } else {
+        playerNameText.value = playerName;
+      }
+
+      // Setup the click event listeners: simply set the map to Chicago.
+      playerNameText.addEventListener("input", () => {
+        storage.setItem("playerName", playerNameText.value);
+      })
+
+      return playerNameText;
+    }
+    function clearMarkerButton(map) {
+      const clearButton = document.createElement("button");
+
+      // Set CSS for the control.
+      clearButton.style.backgroundColor = "#fff";
+      clearButton.style.border = "2px solid #fff";
+      clearButton.style.borderRadius = "3px";
+      clearButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+      clearButton.style.color = "rgb(25,25,25)";
+      clearButton.style.cursor = "pointer";
+      clearButton.style.fontFamily = "Roboto,Arial,sans-serif";
+      clearButton.style.fontSize = "16px";
+      clearButton.style.lineHeight = "38px";
+      clearButton.style.margin = "8px 0 22px";
+      clearButton.style.padding = "0 5px";
+      clearButton.style.textAlign = "center";
+      clearButton.textContent = "Clear All Markers";
+      clearButton.title = "Click to clear markers";
+      clearButton.type = "button";
+      clearButton.addEventListener("click", () => {
+        var storage = window.localStorage;
+        storage.setItem("Markers", "[]");
+        newMarkersElement.forEach(item => {
+            item.setMap(null);
+            item = null
+          });
+        MarkersElement.forEach(item => {
+            item.setMap(null);
+            item = null
+          });
+
+          newMarkersElement=[];
+          MarkersElement=[];
+      });
+      return clearButton;
     }
     initMap();
   </script>
