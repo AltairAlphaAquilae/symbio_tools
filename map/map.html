@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Symbio Treasure Hunting Recorder</title>
+  <title>Unofficial Symbio Treasure Hunting Recorder</title>
   <script>
     (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
       key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
@@ -171,6 +171,12 @@
       const donate = donateButton(map);
       bottomControlDiv.appendChild(donate);
       map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(bottomControlDiv);
+
+      const titleDiv = document.createElement("div");
+      const title_div = titleButton(map);
+      titleDiv.appendChild(title_div);
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(titleDiv);
+
     }
 
     function getDate() {
@@ -349,6 +355,26 @@
       return donateButton;
     }
 
+    function titleButton(map) {
+      const titleButton = document.createElement("button");
+
+      // Set CSS for the control.
+      titleButton.style.backgroundColor = "#fff";
+      titleButton.style.border = "2px solid #fff";
+      titleButton.style.borderRadius = "3px";
+      titleButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+      titleButton.style.color = "rgb(25,25,25)";
+      titleButton.style.cursor = "pointer";
+      titleButton.style.fontFamily = "Roboto,Arial,sans-serif";
+      titleButton.style.fontSize = "16px";
+      titleButton.style.lineHeight = "30px";
+      titleButton.style.margin = "0px 0px 0px";
+      titleButton.style.padding = "0 5px";
+      titleButton.style.textAlign = "center";
+      titleButton.innerHTML = "<a href=\"https://symbiogenesis.app/\" target=\"_blank\">This is UNOFFICIAL tool for Symbiogenesis.</a>";
+      titleButton.type = "button";
+      return titleButton;
+    }
     initMap();
   </script>
 </body>
