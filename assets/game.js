@@ -68,7 +68,7 @@ const generateGame = () => {
         throw new Error("The dimension of the board must be an even number.")
     }
 
-    const picks = generateRandom((dimensions * dimensions) / 2,44) 
+    const picks = generateRandom((dimensions * dimensions) / 2,50) 
     const items = shuffle([...picks, ...picks])
 
     for (let index = 0; index < (dimensions * dimensions); index++) {
@@ -142,7 +142,7 @@ const flipCard = card => {
             selectors.boardContainer.classList.add('flipped')
             selectors.win.innerHTML = `
                 <span class="win-text">
-                The Choice of SYMBIOGENESIS...<br />
+                SEASON2 will start at Jun 20th at 12:00 (JST)<br />
                     With <span class="highlight">${state.totalFlips}</span> moves<br />
                     under <span class="highlight">${state.totalTime/10}</span> seconds
                 </span>
