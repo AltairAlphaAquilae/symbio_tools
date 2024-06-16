@@ -29,6 +29,7 @@
           const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
           marker.content = pinViewBackground.element;
           marker.zIndex = 1;
+          marker.title= newMarkersElement.length + ":" + getDate() + ":" + "Item is here!";
           // 情報ウィンドウ（吹き出し）の設定
           var infoWindow = new google.maps.InfoWindow({
             content: '<input type="text" id="markerTitleInputInfoWindow"><input type="button" id="SaveBtn" value="Submit">'
@@ -215,15 +216,22 @@
           }
 
           newMarkersElement.forEach(item => {
-            var json_item = { lat: item.ft.Gg, lng: item.ft.Hg, title: item.hA.slice((item.hA.split(':')[0].length)+1), type: item.Aw };
+            var marker=new google.maps.marker.AdvancedMarkerElement(item); 
+            var json_item = { lat: marker.position.lat, lng: marker.position.lng, title: marker.title.slice((marker.title.split(':')[0].length) + 1), type: marker.zIndex};
             json_add = JSON.parse(JSON.stringify(json_item));
             json_base.push(json_add);
             item.setMap(null);
-            item = null
+            item = null;
+            marker.setMap(null);
+            marker = null;
           });
+          newMarkersElement = [];
 
           storage.setItem("Markers", JSON.stringify(json_base));
-          newMarkersElement = [];
+          MarkersElement.forEach(item => {
+            item.setMap(null);
+            item = null
+          });
           MarkersElement = [];
           var markersStorage = storage.getItem("Markers");
           if (markersStorage != null) {
@@ -346,7 +354,7 @@
       donateButton.type = "button";
       donateButton.addEventListener("click", () => {
         if(donateButton.innerHTML == "[レプリカの寄付のお願い]<br>[Request for replica donation]"){
-        donateButton.innerHTML = "<a href=\"https://opensea.io/account?search[collections][0]=symbiogenesis-replica&search[stringTraits][0][name]=Chapter&search[stringTraits][0][values][0]=CH2\" target=\"_blank\">[レプリカの寄付のお願い]<br>もし本ツールがお役に立てたら<br>以下アドレスへのレプリカのご寄付をお願いします！<br>アドレスはクリップボードにコピー済みです。<br>[Request for replica donation]<br>If this tool is useful to you,<br>please donate a replica to the following address.<br>The address has been copied to the clipboard.<br><br>0x92F2AC81D92748E1Ff474DdD98E713D9D7237589</a>";
+        donateButton.innerHTML = "<a href=\"https://opensea.io/account?search[collections][0]=symbiogenesis-replica\" target=\"_blank\">[レプリカの寄付のお願い]<br>もし本ツールがお役に立てたら<br>以下アドレスへのレプリカのご寄付をお願いします！<br>アドレスはクリップボードにコピー済みです。<br>[Request for replica donation]<br>If this tool is useful to you,<br>please donate a replica to the following address.<br>The address has been copied to the clipboard.<br><br>0x92F2AC81D92748E1Ff474DdD98E713D9D7237589</a>";
       } else {
         donateButton.innerHTML = "[レプリカの寄付のお願い]<br>[Request for replica donation]";
       };
