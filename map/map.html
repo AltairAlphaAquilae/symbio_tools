@@ -19,17 +19,18 @@
 </head>
 
 <body>
-  <div id="map"></div>
+  <div id="map" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"></div>
   <script>
     var newMarkersElement = [];
     var MarkersElement = [];
+    var map=null;
     function markerClick(marker) {
       switch (marker.zIndex) {
         case 0:
           const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
           marker.content = pinViewBackground.element;
           marker.zIndex = 1;
-          marker.title= newMarkersElement.length + ":" + getDate() + ":" + "Item is here!";
+          marker.title = newMarkersElement.length + ":" + getDate() + ":" + "Item is here!";
           // 情報ウィンドウ（吹き出し）の設定
           var infoWindow = new google.maps.InfoWindow({
             content: '<input type="text" id="markerTitleInputInfoWindow"><input type="button" id="SaveBtn" value="Submit">'
@@ -96,7 +97,7 @@
         maxZoom: 7, // 最大のzoomレベル
       });
 
-      var map = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('map'), {
         zoom: 3, // 初期zoomレベルを指定
         center: { lat: 40, lng: -20 },
         mapTypeId: 'image_map',
@@ -120,7 +121,7 @@
               map,
               position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
               title: storedMarker.title,
-              zIndex: storedMarker.zIndex
+              zIndex: storedMarker.type
             });
           } else {
             var marker = new google.maps.marker.AdvancedMarkerElement({
@@ -128,7 +129,7 @@
               position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
               title: storedMarker.title,
               content: pinViewBackground.element,
-              zIndex: storedMarker.zIndex
+              zIndex: storedMarker.type
             });
           }
           MarkersElement.push(marker);
@@ -178,12 +179,53 @@
       titleDiv.appendChild(title_div);
       map.controls[google.maps.ControlPosition.TOP_LEFT].push(titleDiv);
 
+      const exportDiv = document.createElement("div");
+      const exportControl = exportButton(map);
+      exportDiv.appendChild(exportControl);
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(exportDiv);
     }
 
     function getDate() {
       let date = new Date();
       return optDate = date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + ' ' + ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
     }
+
+    function exportButton(map) {
+      const exportButton = document.createElement("button");
+
+      // Set CSS for the control.
+      exportButton.style.backgroundColor = "#fff";
+      exportButton.style.border = "2px solid #fff";
+      exportButton.style.borderRadius = "3px";
+      exportButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+      exportButton.style.color = "rgb(25,25,25)";
+      exportButton.style.cursor = "pointer";
+      exportButton.style.fontFamily = "Roboto,Arial,sans-serif";
+      exportButton.style.fontSize = "16px";
+      exportButton.style.lineHeight = "38px";
+      exportButton.style.margin = "0px 0 0px";
+      exportButton.style.padding = "0 5px";
+      exportButton.style.textAlign = "center";
+      exportButton.textContent = "Export Markers";
+      exportButton.title = "Click to export submitted markers";
+      exportButton.type = "button";
+      exportButton.addEventListener("click", () => {
+        var storage = window.localStorage;
+        var markersStorage = storage.getItem("Markers");
+        if (markersStorage == null) {
+          markersStorage = [];
+          markersStorage = JSON.stringify(markersStorage)
+        } else {
+        }
+        const blob = new Blob([markersStorage], { type: "text/plain" });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'markers.json';
+        link.click();
+      });
+      return exportButton;
+    }
+
     function createSubmitButton(map) {
       const controlButton = document.createElement("button");
 
@@ -216,8 +258,8 @@
           }
 
           newMarkersElement.forEach(item => {
-            var marker=new google.maps.marker.AdvancedMarkerElement(item); 
-            var json_item = { lat: marker.position.lat, lng: marker.position.lng, title: marker.title.slice((marker.title.split(':')[0].length) + 1), type: marker.zIndex};
+            var marker = new google.maps.marker.AdvancedMarkerElement(item);
+            var json_item = { lat: marker.position.lat, lng: marker.position.lng, title: marker.title.slice((marker.title.split(':')[0].length) + 1), type: marker.zIndex };
             json_add = JSON.parse(JSON.stringify(json_item));
             json_base.push(json_add);
             item.setMap(null);
@@ -243,7 +285,7 @@
                   map,
                   position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
                   title: storedMarker.title,
-                  zIndex: storedMarker.zIndex
+                  zIndex: storedMarker.type
                 });
               } else {
                 var marker = new google.maps.marker.AdvancedMarkerElement({
@@ -251,7 +293,7 @@
                   position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
                   title: storedMarker.title,
                   content: pinViewBackground.element,
-                  zIndex: storedMarker.zIndex
+                  zIndex: storedMarker.type
                 });
               }
               MarkersElement.push(marker);
@@ -320,16 +362,16 @@
         var storage = window.localStorage;
         storage.setItem("Markers", "[]");
         newMarkersElement.forEach(item => {
-            item.setMap(null);
-            item = null
-          });
+          item.setMap(null);
+          item = null
+        });
         MarkersElement.forEach(item => {
-            item.setMap(null);
-            item = null
-          });
+          item.setMap(null);
+          item = null
+        });
 
-          newMarkersElement=[];
-          MarkersElement=[];
+        newMarkersElement = [];
+        MarkersElement = [];
       });
       return clearButton;
     }
@@ -353,12 +395,12 @@
       donateButton.innerHTML = "[レプリカの寄付のお願い]<br>[Request for replica donation]";
       donateButton.type = "button";
       donateButton.addEventListener("click", () => {
-        if(donateButton.innerHTML == "[レプリカの寄付のお願い]<br>[Request for replica donation]"){
-        donateButton.innerHTML = "<a href=\"https://opensea.io/account?search[collections][0]=symbiogenesis-replica\" target=\"_blank\">[レプリカの寄付のお願い]<br>もし本ツールがお役に立てたら<br>以下アドレスへのレプリカのご寄付をお願いします！<br>アドレスはクリップボードにコピー済みです。<br>[Request for replica donation]<br>If this tool is useful to you,<br>please donate a replica to the following address.<br>The address has been copied to the clipboard.<br><br>0x92F2AC81D92748E1Ff474DdD98E713D9D7237589</a>";
-      } else {
-        donateButton.innerHTML = "[レプリカの寄付のお願い]<br>[Request for replica donation]";
-      };
-      navigator.clipboard.writeText("0x92F2AC81D92748E1Ff474DdD98E713D9D7237589");
+        if (donateButton.innerHTML == "[レプリカの寄付のお願い]<br>[Request for replica donation]") {
+          donateButton.innerHTML = "<a href=\"https://opensea.io/account?search[collections][0]=symbiogenesis-replica\" target=\"_blank\">[レプリカの寄付のお願い]<br>もし本ツールがお役に立てたら<br>以下アドレスへのレプリカのご寄付をお願いします！<br>アドレスはクリップボードにコピー済みです。<br>[Request for replica donation]<br>If this tool is useful to you,<br>please donate a replica to the following address.<br>The address has been copied to the clipboard.<br><br>0x92F2AC81D92748E1Ff474DdD98E713D9D7237589</a>";
+        } else {
+          donateButton.innerHTML = "[レプリカの寄付のお願い]<br>[Request for replica donation]";
+        };
+        navigator.clipboard.writeText("0x92F2AC81D92748E1Ff474DdD98E713D9D7237589");
       });
       return donateButton;
     }
@@ -382,6 +424,87 @@
       titleButton.innerHTML = "<a href=\"https://symbiogenesis.app/\" target=\"_blank\">This is UNOFFICIAL tool for Symbiogenesis.</a>";
       titleButton.type = "button";
       return titleButton;
+    }
+    function importMarkerFile(file) {
+      //FileReaderでテキスト読み込み。
+      const reader = new FileReader();
+      reader.onload = () => {
+        var storage = window.localStorage;
+        var markersStorage = storage.getItem("Markers");
+        if (markersStorage == null) {
+          markersStorage = [];
+          markersStorage = JSON.stringify(markersStorage)
+          json_base = JSON.parse(markersStorage)
+        } else {
+          json_base = JSON.parse(markersStorage)
+        }
+        var json_add = JSON.parse(reader.result);
+
+        var count = 0;
+        json_add.forEach(item => {
+          if ('lat' in item && 'lng' in item && 'title' in item && 'type' in item) {
+            json_base.push(item);
+            count++;
+          }
+        });
+
+        if (count > 0) {
+          MarkersElement.forEach(item => {
+            item.setMap(null);
+            item = null
+          });
+          MarkersElement = [];
+          json_base.forEach(storedMarker => {
+            const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
+            if (storedMarker.type == 0) {
+              var marker = new google.maps.marker.AdvancedMarkerElement({
+                map,
+                position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
+                title: storedMarker.title,
+                zIndex: storedMarker.type
+              });
+            } else {
+              var marker = new google.maps.marker.AdvancedMarkerElement({
+                map,
+                position: new google.maps.LatLng(storedMarker.lat, storedMarker.lng),
+                title: storedMarker.title,
+                content: pinViewBackground.element,
+                zIndex: storedMarker.type
+              });
+            }
+            MarkersElement.push(marker);
+          });
+          storage.setItem("Markers", JSON.stringify(json_base));
+        }
+      };
+      reader.readAsText(file);
+    }
+    function dropHandler(ev) {
+      console.log("File(s) dropped");
+      // 既定の動作で防ぐ（ファイルが開かれないようにする）
+      ev.preventDefault();
+
+      if (ev.dataTransfer.items) {
+        // DataTransferItemList インターフェイスを使用して、ファイルにアクセスする
+        [...ev.dataTransfer.items].forEach((item, i) => {
+          // ドロップしたものがファイルでない場合は拒否する
+          if (item.kind === "file") {
+            const file = item.getAsFile();
+            console.log(`… file[${i}].name = ${file.name}`);
+            importMarkerFile(file);
+          }
+        });
+      } else {
+        // DataTransfer インターフェイスを使用してファイルにアクセスする
+        [...ev.dataTransfer.files].forEach((file, i) => {
+          console.log(`… file[${i}].name = ${file.name}`);
+          importMarkerFile(file);
+        });
+      }
+    }
+    function dragOverHandler(ev) {
+      // 既定の動作で防ぐ（ファイルが開かれないようにする）
+      ev.preventDefault();
     }
     initMap();
   </script>
