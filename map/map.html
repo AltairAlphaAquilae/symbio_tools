@@ -30,7 +30,7 @@
           const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
           marker.content = pinViewBackground.element;
           marker.zIndex = 1;
-          marker.title = newMarkersElement.length + ":" + getDate() + ":" + "Item is here!";
+          marker.title = marker.title.split(':')[0] + ":" + getDate() + ":" + "Item is here!";
           // 情報ウィンドウ（吹き出し）の設定
           var infoWindow = new google.maps.InfoWindow({
             content: '<input type="text" id="markerTitleInputInfoWindow"><input type="button" id="SaveBtn" value="Submit">'
@@ -40,7 +40,7 @@
           isGoogleDomReady(infoWindow, marker);
           break;
         case 1:
-          newMarkersElement = newMarkersElement.filter(newMarkersElement => Number(newMarkersElement.hA.split(':')[0]) !== Number(marker.title.split(':')[0]));
+          newMarkersElement = newMarkersElement.filter(newMarkersElement => Number(newMarkersElement.title.split(':')[0]) !== Number(marker.title.split(':')[0]));
           marker.setMap(null);
           marker = null;
           break;
