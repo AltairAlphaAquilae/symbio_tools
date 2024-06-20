@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #222222;
+      font-family: Arial;
+    }
+
+    button {
+      margin: 0 0 1em 0.5em;
+    }
+
+    table {
+      border-collapse: collapse;
+
+    }
+
+    th {
+      color: black;
+      background: rgb(180, 180, 180);
+      cursor: pointer;
+    }
+
+    th.sort-asc::after {
+      content: '↓';
+    }
+
+    th.sort-desc::after {
+      content: '↑';
+    }
+
+    td {
+      color: white;
+      padding: 10px;
+      border-bottom: 1px solid lightgray;
+      vertical-align: top;
+    }
+
+    h1 {
+      color: #ffffff;
+      font-size: 50px;
+      word-break: break-all;
+    }
+
+    h2 {
+      color: yellowgreen;
+      font-size: 25px;
+      word-break: break-all;
+    }
+
+    h4 {
+      color: #ffffff;
+      font-size: 15px;
+      word-break: normal;
+    }
+
+    a:visited {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MAIN (Center website) -->
+
+  <h1>Symbiogenesis Season 2 Item Check List</h1>
+
+  <hr>
+  <h4 id="updated">最終更新日時: - </h4>
+  <br>
+  <button id="remove-btn">すべて外す</button>
+  <table>
+    <tr>
+      <th>アイテム名</th>
+      <th>チェック欄</th>
+    </tr>
+
+    <tr>
+      <td>世界樹のタリスマン『スイッチ』</td>
+      <td><input name="itemcheck" id="0" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>重力エネルギー生成装置</td>
+      <td><input name="itemcheck" id="1" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>研究員の腕時計</td>
+      <td><input name="itemcheck" id="2" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>碧刀-青葉-</td>
+      <td><input name="itemcheck" id="3" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>世界樹カートリッジ</td>
+      <td><input name="itemcheck" id="4" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>科学雑誌-アイザック-</td>
+      <td><input name="itemcheck" id="5" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>太古の記録媒体</td>
+      <td><input name="itemcheck" id="6" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>重力石</td>
+      <td><input name="itemcheck" id="7" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>エネルギー粉</td>
+      <td><input name="itemcheck" id="8" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>人工エメラルド</td>
+      <td><input name="itemcheck" id="9" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>対巨大トカゲ用爆竹</td>
+      <td><input name="itemcheck" id="10" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>第二コロニー酒場のマッチ</td>
+      <td><input name="itemcheck" id="11" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>ガラクタ機械</td>
+      <td><input name="itemcheck" id="12" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>コア鉱石</td>
+      <td><input name="itemcheck" id="13" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>活性剤</td>
+      <td><input name="itemcheck" id="14" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>猛毒サソリの唐揚げ</td>
+      <td><input name="itemcheck" id="15" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>救国ブドウ</td>
+      <td><input name="itemcheck" id="16" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>精密ドライバーセット</td>
+      <td><input name="itemcheck" id="17" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>学園都市のデータチップ</td>
+      <td><input name="itemcheck" id="18" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>応急処置キット</td>
+      <td><input name="itemcheck" id="19" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>頑丈な綱</td>
+      <td><input name="itemcheck" id="20" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>登山杖</td>
+      <td><input name="itemcheck" id="21" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>ジャズ名曲楽譜集</td>
+      <td><input name="itemcheck" id="22" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>浮遊大陸風景画集</td>
+      <td><input name="itemcheck" id="23" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>マイナーバーボン</td>
+      <td><input name="itemcheck" id="24" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>ダウジングマシン</td>
+      <td><input name="itemcheck" id="25" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>骨董品図鑑</td>
+      <td><input name="itemcheck" id="26" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>崖トウモロコシ油</td>
+      <td><input name="itemcheck" id="27" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>エネルギー草</td>
+      <td><input name="itemcheck" id="28" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>エネルギー葉っぱ</td>
+      <td><input name="itemcheck" id="29" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>オアシス貝殻</td>
+      <td><input name="itemcheck" id="30" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>クイーンのコイン</td>
+      <td><input name="itemcheck" id="31" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>翡翠のアミュレット</td>
+      <td><input name="itemcheck" id="32" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>蒼結晶</td>
+      <td><input name="itemcheck" id="33" type="checkbox"></td>
+    </tr>
+<tr>
+      <td>青いかけら</td>
+      <td><input name="itemcheck" id="34" type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>硫黄</td>
+      <td><input name="itemcheck" id="35" type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>竜信仰のタロットカード-角人-</td>
+      <td><input name="itemcheck" id="36" type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>胃石ユグライト</td>
+      <td><input name="itemcheck" id="37" type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>エネルギー弾薬</td>
+      <td><input name="itemcheck" id="38" type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>学園都市校章バッジ</td>
+      <td><input name="itemcheck" id="39" type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>防人のロボットアーム</td>
+      <td><input name="itemcheck" id="40" type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>崖トウモロコシ</td>
+      <td><input name="itemcheck" id="41" type="checkbox"></td>
+    </tr>
+  </table>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+
+      var storage = window.localStorage;
+      var lastUpdated = storage.getItem("ItmChkLstUdt");
+      var updated = document.getElementById("updated");
+      var checkedItemsStr = storage.getItem("chckdItmCh2");
+      let checkedItems = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,".split(',');
+      if (lastUpdated == null) {
+        updated.innerHTML = "最終更新日時: -";
+      } else {
+        updated.innerHTML = "最終更新日時:" + lastUpdated;
+      }
+      if (checkedItemsStr != null) {
+        checkedItems = checkedItemsStr.split(',');
+      }
+
+      const item = document.getElementsByName('itemcheck');
+      const removeBtn = document.getElementById('remove-btn');
+      removeBtn.addEventListener('click', removeFunc, false);
+      for (let i = 0; i < item.length; i++) {
+        item[i].addEventListener('change', valueChange);
+        if (checkedItems[i] == '1') {
+          item[i].checked = true;
+        }
+      }
+
+      function removeFunc() {
+        for (let i = 0; i < item.length; i++) {
+          item[i].checked = false;
+          checkedItems[i] = '0';
+        }
+        updateDate();
+        storage.setItem("chckdItmCh2", checkedItems.join(','));
+      }
+      function updateDate() {
+        var date = new Date();
+        var updated = document.getElementById("updated");
+        updated.innerHTML = "最終更新日時:" + date;
+        storage.setItem("ItmChkLstUdt", date);
+      }
+      function valueChange(e) {
+        updateDate();
+        console.log(e.srcElement.id);
+        if (e.srcElement.checked) {
+          checkedItems[Number(e.srcElement.id)] = '1';
+        }
+        else {
+          checkedItems[Number(e.srcElement.id)] = '0';
+        }
+        storage.setItem("chckdItmCh2", checkedItems.join(','));
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
