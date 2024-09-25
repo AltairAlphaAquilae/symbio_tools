@@ -139,12 +139,17 @@ const flipCard = card => {
     // If there are no more cards that we can flip, we won the game
     if (!document.querySelectorAll('.card:not(.flipped)').length) {
         setTimeout(() => {
+            let date = new Date();
+
+var d1 = date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' +('0' + date.getDate()).slice(-2) + ' ' +  ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2) + ':' + ('0' + date.getSeconds()).slice(-2);
+console.log(d1); // 2010/03/11 11:24:30.776
             selectors.boardContainer.classList.add('flipped')
             selectors.win.innerHTML = `
                 <span class="win-text">
-                SEASON2 will start at Jun 20th at 12:00 (JST)<br />
-                    With <span class="highlight">${state.totalFlips}</span> moves<br />
-                    under <span class="highlight">${state.totalTime/10}</span> seconds
+                SJS Space!.<br />
+                    <span class="highlight">${state.totalFlips}</span> moves<br />
+                    under <span class="highlight">${state.totalTime/10}</span> seconds.
+                    <br />${d1}.
                 </span>
             `
 
