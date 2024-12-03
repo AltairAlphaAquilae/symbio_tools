@@ -25,6 +25,7 @@
     var MarkersElement = [];
     var map = null;
     function markerClick(marker) {
+
       switch (marker.zIndex) {
         case 0:
           const pinViewBackground = new google.maps.marker.PinElement({ background: "#FBBC04", glyphColor: "white", });
@@ -90,9 +91,9 @@
           }
           return './asset/' +
             '/' + zoom + '/tile_' + coord.x + '_' +
-            coord.y + '.jpg';
+            coord.y + '.webp';
         },
-        tileSize: new google.maps.Size(450, 450),// タイルのサイズ（px）を指定
+        tileSize: new google.maps.Size(500, 500),// タイルのサイズ（px）を指定
         minZoom: 3, // 最大のzoomレベル
         maxZoom: 7, // 最大のzoomレベル
       });
@@ -108,7 +109,7 @@
         mapId: "DEMO_MAP_ID"
       });
 
-      map.overlayMapTypes.insertAt(0, new Grid(new google.maps.Size(450, 450)));
+      map.overlayMapTypes.insertAt(0, new Grid(new google.maps.Size(500, 500)));
       map.mapTypes.set('image_map', imageMap);
       var storage = window.localStorage;
       var markersStorage = storage.getItem("Markers");
@@ -140,6 +141,7 @@
       //クリックしたときの処理
       function markNoItem(event) {
         //marker作成
+        
         var marker = new google.maps.marker.AdvancedMarkerElement({
           map,
           position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
@@ -188,6 +190,20 @@
       const importControl = importButton(map);
       importDiv.appendChild(importControl);
       map.controls[google.maps.ControlPosition.TOP_CENTER].push(importDiv);
+
+      const flightPlanCoordinates = [
+    { lat: 40, lng: -20 },
+    { lat: 50, lng: -10 },
+  ];
+  const flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: "#FF0000",
+    strokeOpacity: 1.0,
+    strokeWeight: 2,
+  });
+
+  //flightPath.setMap(map);
     }
 
     function getDate() {
@@ -600,6 +616,7 @@
       ev.preventDefault();
     }
     initMap();
+
   </script>
 </body>
 
