@@ -104,7 +104,7 @@ const startGame = () => {
                 selectors.boardContainer.classList.add('flipped')
                 selectors.win.innerHTML = `
                     <span class="win-text">
-                    SEASON3 will come soon....<br />
+                    SEASON4 is Ongoing!<br />
                         You found <span class="highlight">${state.totalOnlyOnes}</span> Only-Ones!
                     </span>
                 `
