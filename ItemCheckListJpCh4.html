@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #222222;
+            font-family: Arial;
+        }
+
+        button {
+            margin: 0 0 1em 0.5em;
+        }
+
+        table {
+            border-collapse: collapse;
+
+        }
+
+        th {
+            color: black;
+            background: rgb(180, 180, 180);
+            cursor: pointer;
+        }
+
+        th.sort-asc::after {
+            content: '↓';
+        }
+
+        th.sort-desc::after {
+            content: '↑';
+        }
+
+        td {
+            color: white;
+            padding: 10px;
+            border-bottom: 1px solid lightgray;
+            vertical-align: top;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 50px;
+            word-break: break-all;
+        }
+
+        h2 {
+            color: yellowgreen;
+            font-size: 25px;
+            word-break: break-all;
+        }
+
+        h4 {
+            color: #ffffff;
+            font-size: 15px;
+            word-break: normal;
+        }
+
+        a:visited {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MAIN (Center website) -->
+
+    <h1>Symbiogenesis Season 4 Item Check List</h1>
+
+    <hr>
+    <h4 id="updated">最終更新日時: - </h4>
+    <br>
+    <button id="remove-btn">すべて外す</button>
+    <table>
+        <tr>
+            <th>アイテム名</th>
+            <th>チェック欄</th>
+            <th>メモ</th>
+        </tr>
+
+        <tr>
+
+        <tr>
+            <td>世界樹のタリスマン『フォー』</td>
+            <td><input name="itemcheck" id="0" type="checkbox"></td>
+            <td>「群」をモチーフに作られたタリスマン。咲いては散ってを繰り返す世界樹の花を見て、竜は何を思うだろうか。</td>
+        </tr>
+        <tr>
+            <td>未完の器 (4章)</td>
+            <td><input name="itemcheck" id="1" type="checkbox"></td>
+            <td>未充電の為、満たされてなく機能しない発生器。手にした者は新しい世界に思いを馳せることができる。</td>
+        </tr>
+        <tr>
+            <td>商人連合認定防人エンブレム</td>
+            <td><input name="itemcheck" id="2" type="checkbox"></td>
+            <td>商人連合から実力を認められた防人が胸につけるエンブレム。持ち主の下には依頼がひっきりなしに舞い込んでくる。</td>
+        </tr>
+        <tr>
+            <td>年代物「ワイルドオウル」</td>
+            <td><input name="itemcheck" id="3" type="checkbox"></td>
+            <td>数百年の熟成期間を経て、掘り出された「ワイルドオウル」という名のウイスキー。誰もが栓を開けるのをためらってしまう。</td>
+        </tr>
+        <tr>
+            <td>紺刀-荒波-</td>
+            <td><input name="itemcheck" id="4" type="checkbox"></td>
+            <td>六勢力時代、「政府」の剣豪十二人衆に名工から献上された刀。荒れ狂う海の高波を一刀両断したという伝説が残っている。</td>
+        </tr>
+        <tr>
+            <td>クラーケンの目玉</td>
+            <td><input name="itemcheck" id="5" type="checkbox"></td>
+            <td>世にも珍しいクラーケンの眼球。浮遊大陸の三大珍味の一つ。程よい苦味と舌の上でとろけていく独特の食感が癖になる。</td>
+        </tr>
+        <tr>
+            <td>エースのペンダント</td>
+            <td><input name="itemcheck" id="6" type="checkbox"></td>
+            <td>六勢力時代、企業の都市ベガスに実在した伝説の博徒が身に着けていたペンダント。中心部には謎のボタンがついている。</td>
+        </tr>
+        <tr>
+            <td>名探偵のパイプ</td>
+            <td><input name="itemcheck" id="7" type="checkbox"></td>
+            <td>かつて存在した名探偵が使っていたとされる、年代物のパイプ。彼の影響で今でもパイプは探偵の代名詞とされる。</td>
+        </tr>
+        <tr>
+            <td>防人の腕章【B級】</td>
+            <td><input name="itemcheck" id="8" type="checkbox"></td>
+            <td>流刑地に存在する防人の「ギルド」で製造される腕章。身に着けた防人の実力と信頼性を証明してくれる装備品。</td>
+        </tr>
+        <tr>
+            <td>ケミカルキャビア</td>
+            <td><input name="itemcheck" id="9" type="checkbox"></td>
+            <td>「高級食材を手軽に」をコンセプトに製造された魚卵風の人工食料。製造コストが高く、現時点では量産できていない。</td>
+        </tr>
+        <tr>
+            <td>円環鉄道整備キット</td>
+            <td><input name="itemcheck" id="10" type="checkbox"></td>
+            <td>鉄道の整備士が常備している工具セット。これさえあればパイプの破裂からネジの緩みまで、あらゆるトラブルに対応できる。</td>
+        </tr>
+        <tr>
+            <td>フライングジェットパック・試作品</td>
+            <td><input name="itemcheck" id="11" type="checkbox"></td>
+            <td>マイナーが手掛けた飛行兵器の試作品。世界樹エネルギーを利用し、爆発的な推進力を生み出す。ただし操作性に難あり。</td>
+        </tr>
+        <tr>
+            <td>グリルドチーズサンド</td>
+            <td><input name="itemcheck" id="12" type="checkbox"></td>
+            <td>研究村の普人が、特産チーズを商人へ売り込むために考案したサンドイッチ。滝のように流れるチーズが食欲をそそる。</td>
+        </tr>
+        <tr>
+            <td>マイナー製ペン型スパイカメラ</td>
+            <td><input name="itemcheck" id="13" type="checkbox"></td>
+            <td>諜報活動に便利なペン型のスパイ道具。たいてい、胸ポケット入れて使用する。撮影した動画は、別媒体へ瞬時に転送可能。</td>
+        </tr>
+        <tr>
+            <td>ブルートパーズの指輪</td>
+            <td><input name="itemcheck" id="14" type="checkbox"></td>
+            <td>霊国で採取できる青い宝石があしらわれた指輪。リングの内側にこう刻印されている。「”Task”へ、永遠の愛をこめて」</td>
+        </tr>
+        <tr>
+            <td>秘宝のトレジャーマップ</td>
+            <td><input name="itemcheck" id="15" type="checkbox"></td>
+            <td>トレジャーハンターなら誰もが欲しがる宝の地図。大体は取り尽くされてしまっているが希望を捨てるにはまだ早い。</td>
+        </tr>
+        <tr>
+            <td>記念硬貨のロープタイ</td>
+            <td><input name="itemcheck" id="16" type="checkbox"></td>
+            <td>記念硬貨の主張が激しいロープタイ。どこかの商人が自身の持つ記念硬貨を自慢したいがために作ったアクセサリー。</td>
+        </tr>
+        <tr>
+            <td>豪商の万年筆</td>
+            <td><input name="itemcheck" id="17" type="checkbox"></td>
+            <td>六勢力時代、企業の都市ヨークで名を成した商人「スティーブ」が愛用した万年筆。軸部分には彼の名前が刻まれている。</td>
+        </tr>
+        <tr>
+            <td>ゴールドアロエの香水</td>
+            <td><input name="itemcheck" id="18" type="checkbox"></td>
+            <td>ゴールドアロエを使った天然由来の香水。かすかに甘い上品な香りで、大事な商談にも適していると評判。</td>
+        </tr>
+        <tr>
+            <td>ポストベガス観光ガイド</td>
+            <td><input name="itemcheck" id="19" type="checkbox"></td>
+            <td>「ポストベガスの全てが詰まった一冊！」と銘打ち、出版社が発行する観光ガイド。読めば充実した旅行になること間違いなし。</td>
+        </tr>
+        <tr>
+            <td>金のチェス駒-初代救世主-</td>
+            <td><input name="itemcheck" id="20" type="checkbox"></td>
+            <td>「初代救世主」を模したチェスの駒。彼の存命中に作られた物で、他にも当時の偉人の駒が存在する。コレクター垂涎のアイテム。</td>
+        </tr>
+        <tr>
+            <td>絵画「神木と摩天楼」</td>
+            <td><input name="itemcheck" id="21" type="checkbox"></td>
+            <td>緻密なタッチの風景画。世界樹と思しき大きな木が、高層ビルに囲まれているように見える。自然と人工物の調和を感じる。</td>
+        </tr>
+        <tr>
+            <td>月刊フーユー大陸 -オカルト特集号-</td>
+            <td><input name="itemcheck" id="22" type="checkbox"></td>
+            <td>創刊10周年を迎える雑誌のオカルト特集号。アンデット魂人、学園都市の怪しい研究、流刑地の人斬り防人等の話が書かれている。</td>
+        </tr>
+        <tr>
+            <td>研究村カヌレ</td>
+            <td><input name="itemcheck" id="23" type="checkbox"></td>
+            <td>ポストベガスでいま流行りのスイーツ。研究村牛乳のまろやかさと、砂糖玉の上品な甘さが際立つ一品。見た目も可愛いと好評。</td>
+        </tr>
+        <tr>
+            <td>開運の鏡</td>
+            <td><input name="itemcheck" id="24" type="checkbox"></td>
+            <td>毎日これで身だしなみを整えれば、運気が上昇するという鏡。実際にそんな効果はないが、悪徳商人が高値で売りつけている。
+            </td>
+        </tr>
+        <tr>
+            <td>研究村名物三色団子</td>
+            <td><input name="itemcheck" id="25" type="checkbox"></td>
+            <td>研究村の花見茶屋で販売されている銘菓。緑色は豊かな大地を、桃色は世界樹の花を、白色は空に浮かぶ雲を表しているらしい。</td>
+        </tr>
+        <tr>
+            <td>農園ココナッツ酒</td>
+            <td><input name="itemcheck" id="26" type="checkbox"></td>
+            <td>ココナッツの果汁を発酵させて作るお酒。すっきりした優しい甘さで飲みやすいが、アルコール度数が高いので、要注意。</td>
+        </tr>
+        <tr>
+            <td>イト食パン</td>
+            <td><input name="itemcheck" id="27" type="checkbox"></td>
+            <td>イト食品が販売している食パン。ミネラル豊富な火山の熱水と数種類の果汁を練り込んでいるため、栄養価がとても高い。</td>
+        </tr>
+        <tr>
+            <td>ストックヤードの改造作業靴</td>
+            <td><input name="itemcheck" id="28" type="checkbox"></td>
+            <td>ストックヤードの防人が履いている作業靴。厚底部分に改造が施され、中に何かを隠せるようだ。多くは悪事に使用される。</td>
+        </tr>
+        <tr>
+            <td>フクロウの羽根ペン</td>
+            <td><input name="itemcheck" id="29" type="checkbox"></td>
+            <td>農園近くの森に生息するフクロウの羽根で作られたペン。書きやすいと評判だが、耐久力が低くすぐ壊れてしまう。 </td>
+        </tr>
+        <tr>
+            <td>ココナッツハンマー</td>
+            <td><input name="itemcheck" id="30" type="checkbox"></td>
+            <td>ココナッツ等、硬い果物の殻を割るための金属製の槌。釘抜きがついておらず、殻に傷をつけるために片面が尖っている。</td>
+        </tr>
+        <tr>
+            <td>漁業用ロープ</td>
+            <td><input name="itemcheck" id="31" type="checkbox"></td>
+            <td>漁業で使われている定番のロープ。「50年使っても千切れない」のキャッチコピーで販売されている。</td>
+        </tr>
+        <tr>
+            <td>浮遊大陸スケッチマップ</td>
+            <td><input name="itemcheck" id="32" type="checkbox"></td>
+            <td>浮遊大陸が発見されて間もない頃に作製された地図の複製。古い物だがその正確性は現在でも高く評価されている。</td>
+        </tr>
+        <tr>
+            <td>ナイル印の胃腸薬</td>
+            <td><input name="itemcheck" id="33" type="checkbox"></td>
+            <td>ナイル貿易が独自に開発・販売している胃腸薬。商談を控えた商人が、緊張による胃痛を和らげるためによく服用している。</td>
+        </tr>
+        <tr>
+            <td>流刑地どぶろく</td>
+            <td><input name="itemcheck" id="34" type="checkbox"></td>
+            <td>流刑地の防人たちが作る豪快なお酒。複雑な作業工程を省いて作られるため、他のお酒よりも安価で市場に出回る。
+            </td>
+        </tr>
+        <tr>
+            <td>円環鉄道回数券</td>
+            <td><input name="itemcheck" id="35" type="checkbox"></td>
+            <td>円環鉄道を使用する際に必要となる切符の回数券。ひと駅の移動につき一枚消費する。ポストベガスでの仕事や観光には不可欠。</td>
+        </tr>
+        <tr>
+            <td>円環鉄道スタンプブック</td>
+            <td><input name="itemcheck" id="36" type="checkbox"></td>
+            <td>円環鉄道の各駅に設置されているスタンプを押印できる冊子。今後建設される予定のまだ存在していない駅名も記載されている。</td>
+        </tr>
+        <tr>
+            <td>淡桜のアミュレット</td>
+            <td><input name="itemcheck" id="37" type="checkbox"></td>
+            <td>幸福を招く効果があるとされているお守り。ポストベガスの世界樹に咲く花を模した可愛いデザインで、お土産としても人気。</td>
+        </tr>
+        <tr>
+            <td>ワーカー新聞・特集号</td>
+            <td><input name="itemcheck" id="38" type="checkbox"></td>
+            <td>ポストベガスの出版社が発行している新聞の特集号。ストックヤードの防人の低賃金問題について、深く切り込んだ内容。</td>
+        </tr>
+        <tr>
+            <td>カジノのチップ</td>
+            <td><input name="itemcheck" id="39" type="checkbox"></td>
+            <td>ポストベガスカジノで用いられている最も価値の低いチップ。これ一枚だけではなんのゲームもさせてもらえない。</td>
+        </tr>
+        <tr>
+            <td>ポストベガスマグロ</td>
+            <td><input name="itemcheck" id="40" type="checkbox"></td>
+            <td>ポストベガス海に生息する大きなマグロ。特に脂の乗った大トロは観光客に大人気。中には小舟ほどの大きさになる個体もいる。</td>
+        </tr>
+        <tr>
+            <td>イト食品の寿司ワサビ</td>
+            <td><input name="itemcheck" id="41" type="checkbox"></td>
+            <td>霊国の川沿いに生えているワサビ。独特の風味が寿司とよく合う。ただ、少量でもかなり辛いので注意が必要。</td>
+        </tr>
+        <tr>
+            <td>クラーケンのタコ墨</td>
+            <td><input name="itemcheck" id="42" type="checkbox"></td>
+            <td>クラーケンが吐き出すタコ墨を集めて商品化したもの。毒素は取り除かれており安心して料理に使用することができる。</td>
+        </tr>
+        <tr>
+            <td>ゴールドアロエ</td>
+            <td><input name="itemcheck" id="43" type="checkbox"></td>
+            <td>ポストベガス西端の荒れ地に自生している金色に輝くアロエ。主に観光客に人気で、美容目的や日焼けのケアによく使われる。</td>
+        </tr>
+        <tr>
+            <td>研究村牛乳</td>
+            <td><input name="itemcheck" id="44" type="checkbox"></td>
+            <td>研究村の名産品。コクがありまろやかで、様々な料理に使われる。ポストベガスの人気スイーツを作る際には欠かせない一品。</td>
+        </tr>
+        <tr>
+            <td>崖サトウキビ</td>
+            <td><input name="itemcheck" id="45" type="checkbox"></td>
+            <td>研究村の崖近くで採れるサトウキビ。これから作られる上質な砂糖が、研究村のスイーツ産業を支えている。</td>
+        </tr>
+        <tr>
+            <td>円環鉄道ドロップス</td>
+            <td><input name="itemcheck" id="46" type="checkbox"></td>
+            <td>列車をかたどった缶に色とりどりの飴玉が入った、円環鉄道の大人気お土産。缶を振ると、カラカラと音が鳴る。</td>
+        </tr>
+        <tr>
+            <td>星くずの金平糖</td>
+            <td><input name="itemcheck" id="47" type="checkbox"></td>
+            <td>星の形をした砂糖の塊。研究村の銘菓として昔から親しまれている。綺麗な星型にするには職人の技術が必要。</td>
+        </tr>
+        <tr>
+            <td>研究村の特産チーズ</td>
+            <td><input name="itemcheck" id="48" type="checkbox"></td>
+            <td>研究村で畜産農が始まった頃から、特産品として生産されているチーズ。救国ワインとの相性はバッチリ。</td>
+        </tr>
+        <tr>
+            <td>リゾートパール【火焔模様】</td>
+            <td><input name="itemcheck" id="49" type="checkbox"></td>
+            <td>炎のような特徴的な模様が浮かんでいるレアな真珠。アクセサリーとして使われれば抜群の存在感を見せる。</td>
+        </tr>
+        <tr>
+            <td>リゾートパール</td>
+            <td><input name="itemcheck" id="50" type="checkbox"></td>
+            <td>光沢のある淡い白色が特徴の真珠。他の色に比べて特に女性人気が高い。商人がポストベガスの海で養殖している。</td>
+        </tr>
+        <tr>
+            <td>ビターゼリー・オールイン</td>
+            <td><input name="itemcheck" id="51" type="checkbox"></td>
+            <td>一日分の全栄養素をこれ一つで摂取できる完全無欠の栄養食。味わったことのない摩訶不思議な風味がするらしい。</td>
+        </tr>
+        <tr>
+            <td>ビターゼリー・ビタミン</td>
+            <td><input name="itemcheck" id="52" type="checkbox"></td>
+            <td>マイナーと共同開発した人工食料、ビターゼリーのライム味。一日分のビタミンを補える、多忙な商人の味方。</td>
+        </tr>
+        <tr>
+            <td>虹燕の巣</td>
+            <td><input name="itemcheck" id="53" type="checkbox"></td>
+            <td>極彩色の羽を持つ虹燕が作った巣。一昔前に巣が乱獲されてしまったため、虹燕自体の数が大きく減少してしまった。</td>
+        </tr>
+        <tr>
+            <td>燕の巣</td>
+            <td><input name="itemcheck" id="54" type="checkbox"></td>
+            <td>ポストベガスに生息する燕が作った巣。スープにすると非常に美味で、高級食材として知られている。</td>
+        </tr>
+        <tr>
+            <td>呪いの石</td>
+            <td><input name="itemcheck" id="55" type="checkbox"></td>
+            <td>生気を吸い取るという噂の石。次第に赤みが増していき、真っ赤になると持ち主は死に至るというが…実際はただの黒曜石である。</td>
+        </tr>
+        <tr>
+            <td>約束の組紐</td>
+            <td><input name="itemcheck" id="56" type="checkbox"></td>
+            <td>丈夫な化学繊維で作られた組紐。フロンティア号の乗組員たちが、お守りとして身に着けていたものらしい。</td>
+        </tr>
+        <tr>
+            <td>浮遊大陸兵器プラモデル・1/10シリーズ『パワード・スーツ』</td>
+            <td><input name="itemcheck" id="57" type="checkbox"></td>
+            <td>「パワード・スーツ」のプラモデル。「浮遊大陸兵器シリーズ」のうちの一つで兵器好きのコレクターたちに人気。</td>
+        </tr>
+        <tr>
+            <td>フロンティア号の模型</td>
+            <td><input name="itemcheck" id="58" type="checkbox"></td>
+            <td>フロンティア時代に建造された大型車両の模型。大勢の人々を乗せて、荒れた地上を突き進んだという伝承が語り継がれている。</td>
+        </tr>
+        <tr>
+            <td>パラダイス錠</td>
+            <td><input name="itemcheck" id="59" type="checkbox"></td>
+            <td>商人連合が調薬している錠剤。飲むと感覚が研ぎ澄まされ、集中力が上がる。しかし薬に頼るのはほどほどにしたい。</td>
+        </tr>
+        <tr>
+            <td>シーサイドホテルのプロジェクター</td>
+            <td><input name="itemcheck" id="60" type="checkbox"></td>
+            <td>シーサイドホテルの各部屋に置いてあるプロジェクター。撮影機材から転送された映像データを映し出すことが可能。</td>
+        </tr>
+        <tr>
+            <td>リゾート海の魚介エキス</td>
+            <td><input name="itemcheck" id="61" type="checkbox"></td>
+            <td>魚介類の旨味が凝縮したスープ。あらゆる料理の味の決め手になるので、外のコミュニティからも需要が高い。</td>
+        </tr>
+        <tr>
+            <td>アブラ貿易の株券</td>
+            <td><input name="itemcheck" id="62" type="checkbox"></td>
+            <td>ポストベガスに存在したアブラ貿易の株券。十数年前にナイル貿易にシェアを奪われ廃業しており、株券としての効果はない。</td>
+        </tr>
+        <tr>
+            <td>リゾート海漁業許可証</td>
+            <td><input name="itemcheck" id="63" type="checkbox"></td>
+            <td>イト食品グループから漁業許可を得た証。漁師なら誰もが携帯しているが、小さいため船上での置き忘れが頻発している。</td>
+        </tr>
+        <tr>
+            <td>竜信仰のタロットカード-息吹-</td>
+            <td><input name="itemcheck" id="64" type="checkbox"></td>
+            <td>「竜信仰」にまつわるタロットカード。炎を吐く恐ろしい竜が描かれているが、これは幸運がやってくる予兆なのだという。</td>
+        </tr>
+        <tr>
+            <td>冒険王Fernandoの秘宝録</td>
+            <td><input name="itemcheck" id="65" type="checkbox"></td>
+            <td>冒険王と呼ばれたトレジャーハンターが死に際に残したメモ。彼が生涯探し求めた浮遊大陸の秘宝について記されている。</td>
+        </tr>
+        <tr>
+            <td>不気味なビスク・ドール</td>
+            <td><input name="itemcheck" id="66" type="checkbox"></td>
+            <td>「呪いの人形」と呼ばれるビスク・ドール。夜中に動き出す、髪が伸びる、目から血を流すといった噂話が絶えない。</td>
+        </tr>
+        <tr>
+            <td>ポストベガスタワー記念硬貨</td>
+            <td><input name="itemcheck" id="67" type="checkbox"></td>
+            <td>ポストベガスタワーの完成記念に発行された限定コイン。市場での流通量が少なく、コレクターの間では高額で取引されている。</td>
+        </tr>
+        <tr>
+            <td>遺物・懐中時計</td>
+            <td><input name="itemcheck" id="68" type="checkbox"></td>
+            <td>水中遺跡で発見された遺物。古い時計だが故障して動かない。よく見ると淵の部分に「Antoine Philippe」と刻まれている。</td>
+        </tr>
+    </table>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+            var storage = window.localStorage;
+            var lastUpdated = storage.getItem("ItmChkLstUdt");
+            var updated = document.getElementById("updated");
+            var checkedItemsStr = storage.getItem("chckdItmCh4");
+            let checkedItems = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,".split(',');
+            if (lastUpdated == null) {
+                updated.innerHTML = "最終更新日時: -";
+            } else {
+                updated.innerHTML = "最終更新日時:" + lastUpdated;
+            }
+            if (checkedItemsStr != null) {
+                checkedItems = checkedItemsStr.split(',');
+            }
+
+            const item = document.getElementsByName('itemcheck');
+            const removeBtn = document.getElementById('remove-btn');
+            removeBtn.addEventListener('click', removeFunc, false);
+            for (let i = 0; i < item.length; i++) {
+                item[i].addEventListener('change', valueChange);
+                if (checkedItems[i] == '1') {
+                    item[i].checked = true;
+                }
+            }
+
+            function removeFunc() {
+                for (let i = 0; i < item.length; i++) {
+                    item[i].checked = false;
+                    checkedItems[i] = '0';
+                }
+                updateDate();
+                storage.setItem("chckdItmCh4", checkedItems.join(','));
+            }
+            function updateDate() {
+                var date = new Date();
+                var updated = document.getElementById("updated");
+                updated.innerHTML = "最終更新日時:" + date;
+                storage.setItem("ItmChkLstUdt", date);
+            }
+            function valueChange(e) {
+                updateDate();
+                console.log(e.srcElement.id);
+                if (e.srcElement.checked) {
+                    checkedItems[Number(e.srcElement.id)] = '1';
+                }
+                else {
+                    checkedItems[Number(e.srcElement.id)] = '0';
+                }
+                storage.setItem("chckdItmCh4", checkedItems.join(','));
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
