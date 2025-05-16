@@ -146,7 +146,7 @@ console.log(d1); // 2010/03/11 11:24:30.776
             selectors.boardContainer.classList.add('flipped')
             selectors.win.innerHTML = `
                 <span class="win-text">
-                SJS Space!<br />
+                SEASON4 is Ongoing!<br />
                     <span class="highlight">${state.totalFlips}</span> moves<br />
                     under <span class="highlight">${state.totalTime/10}</span> seconds.
                     <br />${d1}.
