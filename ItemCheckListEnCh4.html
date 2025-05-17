@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #222222;
+            font-family: Arial;
+        }
+
+        button {
+            margin: 0 0 1em 0.5em;
+        }
+
+        table {
+            border-collapse: collapse;
+
+        }
+
+        th {
+            color: black;
+            background: rgb(180, 180, 180);
+            cursor: pointer;
+        }
+
+        th.sort-asc::after {
+            content: '↓';
+        }
+
+        th.sort-desc::after {
+            content: '↑';
+        }
+
+        td {
+            color: white;
+            padding: 10px;
+            border-bottom: 1px solid lightgray;
+            vertical-align: top;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 50px;
+            word-break: break-all;
+        }
+
+        h2 {
+            color: yellowgreen;
+            font-size: 25px;
+            word-break: break-all;
+        }
+
+        h4 {
+            color: #ffffff;
+            font-size: 15px;
+            word-break: normal;
+        }
+
+        a:visited {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MAIN (Center website) -->
+
+    <h1>Symbiogenesis Season 4 Item Check List</h1>
+
+    <hr>
+    <h4 id="updated">Last Update: - </h4>
+    <br>
+    <button id="remove-btn">Deselct All</button>
+    <table>
+        <tr>
+            <th>Item Name</th>
+            <th>Check Box</th>
+            <th>Caption</th>
+        </tr>
+
+        <tr>
+        <tr>
+            <td>World Tree Talisman -For-</td>
+            <td><input name="itemcheck" id="0" type="checkbox"></td>
+            <td>A talisman that symbolizes the act of ”banding together.” One wonders what the dragon must think when it
+                observes the flowers of the World Tree bloom and fall in quick succession.</td>
+        </tr>
+        <tr>
+            <td>Incomplete Generator (CH4)</td>
+            <td><input name="itemcheck" id="1" type="checkbox"></td>
+            <td>An uncharged generator, dormant and non-functional. Those who possess it can envision a new world.</td>
+        </tr>
+        <tr>
+            <td>Merchant Union-Certified Guard Emblem</td>
+            <td><input name="itemcheck" id="2" type="checkbox"></td>
+            <td>An emblem worn on the chest by Guards deemed competent by the Merchant Union. Owners of this item are
+                subject to incessant requests for help.</td>
+        </tr>
+        <tr>
+            <td>Antique: Wild Oul</td>
+            <td><input name="itemcheck" id="3" type="checkbox"></td>
+            <td>A bottle of the famous Wild Oul whiskey, aged for several centuries. There isn't a person alive who
+                wouldn't hesitate before opening the cap.</td>
+        </tr>
+        <tr>
+            <td>Navy Blade -Stormcaller-</td>
+            <td><input name="itemcheck" id="4" type="checkbox"></td>
+            <td>A sword presented by a master craftsman to the Twelve Blademasters of the Government during the Six
+                Powers Era. Legend says it once cut a towering wave into two as it rose from the stormy seas.</td>
+        </tr>
+        <tr>
+            <td>Kraken's Eye</td>
+            <td><input name="itemcheck" id="5" type="checkbox"></td>
+            <td>The eye of a rarely-seen kraken. Considered one of three famous delicacies of the Floating Continent, it
+                has a pleasantly bitter taste and melts on the tongue. Its unique mouthfeel soon captivates those who
+                try it.</td>
+        </tr>
+        <tr>
+            <td>Ace Pendant</td>
+            <td><input name="itemcheck" id="6" type="checkbox"></td>
+            <td>A pendant worn by a legendary gambler who lived in Vegas City under the Company during the Six Powers
+                Era. A mysterious button lies at its center.</td>
+        </tr>
+        <tr>
+            <td>Great Detective's Pipe</td>
+            <td><input name="itemcheck" id="7" type="checkbox"></td>
+            <td>An antique pipe once used by a famous detective of the past. Due to his influence, pipe-smoking has
+                become synonymous with detective work.</td>
+        </tr>
+        <tr>
+            <td>Guard's Armband (B Grade)</td>
+            <td><input name="itemcheck" id="8" type="checkbox"></td>
+            <td>An armband created within the Guild at the Penal Colony. It presents the Guards who wear it as capable
+                and trustworthy.</td>
+        </tr>
+        <tr>
+            <td>Chemical Caviar</td>
+            <td><input name="itemcheck" id="9" type="checkbox"></td>
+            <td>A processed food that was born out of an effort to make luxury goods accessible. However, the
+                manufacturing costs involved are high, and mass production is yet to begin.</td>
+        </tr>
+        <tr>
+            <td>Circle Railway Service Kit</td>
+            <td><input name="itemcheck" id="10" type="checkbox"></td>
+            <td>A set of tools that are found on every railroad maintenance worker. From pipe leaks to loose screws,
+                this kit will allow you to deal with all sorts of problems.</td>
+        </tr>
+        <tr>
+            <td>Flying Jet Pack: Prototype</td>
+            <td><input name="itemcheck" id="11" type="checkbox"></td>
+            <td>A prototype of a jet pack made by Miners. It uses World Tree Energy to create an explosive level of
+                propulsion—a characteristic that makes it very hard to control.</td>
+        </tr>
+        <tr>
+            <td>Grilled Cheese Sandwich</td>
+            <td><input name="itemcheck" id="12" type="checkbox"></td>
+            <td>A sandwich created to increase the sales of cheese produced by the Normies in Research Village. The
+                sight of oozing cheese is enough to stir anyone's appetite.</td>
+        </tr>
+        <tr>
+            <td>Miner-made Pen Spy Camera</td>
+            <td><input name="itemcheck" id="13" type="checkbox"></td>
+            <td>A spy tool in the shape of a pen, useful for performing intelligence assessments. It is generally used
+                from the breast pocket, and the videos it takes can be sent instantly to a separate device.</td>
+        </tr>
+        <tr>
+            <td>Blue Topaz Ring</td>
+            <td><input name="itemcheck" id="14" type="checkbox"></td>
+            <td>A ring adorned with a blue gemstone that can be found in the Departed Land. Contains an inscription on
+                its inner side that reads: "For Task, who forever has my love."</td>
+        </tr>
+        <tr>
+            <td>Treasure Map</td>
+            <td><input name="itemcheck" id="15" type="checkbox"></td>
+            <td>A map that would excite any Treasure Hunter that came across it. The avenues it presents have mostly
+                been exhausted, but it's too early to give up hope yet.</td>
+        </tr>
+        <tr>
+            <td>Commemorative Coin Bolo Tie</td>
+            <td><input name="itemcheck" id="16" type="checkbox"></td>
+            <td>A bolo tie that places an extreme emphasis on the commemorative coin at its center. It was created by a
+                certain Merchant who wanted to show off his prized possession.</td>
+        </tr>
+        <tr>
+            <td>Wealthy Merchant's Fountain Pen</td>
+            <td><input name="itemcheck" id="17" type="checkbox"></td>
+            <td>A fountain pen belonging to Steve, a Merchant who made a name for himself in the Company's York City
+                during the Six Powers Era. His name is inscribed into the side.</td>
+        </tr>
+        <tr>
+            <td>Gold Aloe Perfume</td>
+            <td><input name="itemcheck" id="18" type="checkbox"></td>
+            <td>A perfume naturally derived from Gold Aloe. It has a faint sweet scent, and is considered to be
+                appropriate for important business meetings.</td>
+        </tr>
+        <tr>
+            <td>Post-Vegas Sightseeing Guide</td>
+            <td><input name="itemcheck" id="19" type="checkbox"></td>
+            <td>A sightseeing guide that claims to have everything you need to know about Post-Vegas inside. Reading its
+                pages will no doubt enhance your trip to the city.</td>
+        </tr>
+        <tr>
+            <td>Gold Chess Piece of the First Conservator</td>
+            <td><input name="itemcheck" id="20" type="checkbox"></td>
+            <td>A chess piece modeled after the First Conservator. It was created during his lifetime, and exists
+                alongside other pieces depicting important figures of the time. A must-have item for any avid collector.
+            </td>
+        </tr>
+        <tr>
+            <td>Painting: Sacred Tree Among the Skyscrapers</td>
+            <td><input name="itemcheck" id="21" type="checkbox"></td>
+            <td>A landscape painting created with meticulous care. It seems to depict a giant tree, reminiscent of the
+                World Tree, standing amid several high-rise towers—a sight that evokes a sense of harmonic dichotomy.
+            </td>
+        </tr>
+        <tr>
+            <td>The Floating Continent Monthly -Occult Edition-</td>
+            <td><input name="itemcheck" id="22" type="checkbox"></td>
+            <td>A magazine that features the occult for its tenth anniversary. It contains articles about undead
+                Sprites, eerie experiments in Academy City, and Slasher Guards in the Penal Colony.</td>
+        </tr>
+        <tr>
+            <td>Research Village Canelés</td>
+            <td><input name="itemcheck" id="23" type="checkbox"></td>
+            <td>A pastry currently popular in Post-Vegas, created using the mellow-tasting milk of Research Village and
+                high-quality sugar with a striking sweetness. Its appearance has also received high praise.</td>
+        </tr>
+        <tr>
+            <td>Mirror of Fortune</td>
+            <td><input name="itemcheck" id="24" type="checkbox"></td>
+            <td>A mirror said to increase the luck of those who groom themselves in its reflection daily. Unfortunately,
+                it has no such effect, but the immoral Merchants knowingly continue to profit greatly from this.</td>
+        </tr>
+        <tr>
+            <td>Research Village's Famous Three-Color Dango</td>
+            <td><input name="itemcheck" id="25" type="checkbox"></td>
+            <td>A famous confectionery sold by a tea house in Research Village. Apparently, the green section represents
+                fertile land; the pink, flowers of the World Tree; and the white, drifting clouds.</td>
+        </tr>
+        <tr>
+            <td>Plantation Coconut Spirit</td>
+            <td><input name="itemcheck" id="26" type="checkbox"></td>
+            <td>A spirit made by fermenting coconut juice. While it has a refreshing sweetness that makes it easy to
+                drink, its alcohol content is quite high. Caution is advised.</td>
+        </tr>
+        <tr>
+            <td>ITO Bread</td>
+            <td><input name="itemcheck" id="27" type="checkbox"></td>
+            <td>A loaf of bread sold by ITO Foods. Its nutritional content is extremely high, as it's made using
+                volcanic mineral water and various types of fruit juice.</td>
+        </tr>
+        <tr>
+            <td>Modified Stockyard Work Boots</td>
+            <td><input name="itemcheck" id="28" type="checkbox"></td>
+            <td>A pair of work boots worn by Guards at the Stockyard. It seems their soles have been modified to allow
+                something to be hidden within—a feature that's often used for nefarious purposes.</td>
+        </tr>
+        <tr>
+            <td>Owl Feather Pen</td>
+            <td><input name="itemcheck" id="29" type="checkbox"></td>
+            <td>A pen made with the feather of an owl that inhabits the forest near the farmlands. It's praised for its
+                ease of use, but lacks in durability, causing it to break easily.</td>
+        </tr>
+        <tr>
+            <td>Coconut Hammer</td>
+            <td><input name="itemcheck" id="30" type="checkbox"></td>
+            <td>A metal hammer used to crack open coconuts and other fruit with hard shells. It's not in the shape of a
+                claw hammer—instead, one of its sides is pointed so it can create a breach.</td>
+        </tr>
+        <tr>
+            <td>Fishing Rope</td>
+            <td><input name="itemcheck" id="31" type="checkbox"></td>
+            <td>A line of rope used daily in the fishing industry. Sold under the guarantee that it will last 50 years
+                without snapping.</td>
+        </tr>
+        <tr>
+            <td>Rough Floating Continent Map</td>
+            <td><input name="itemcheck" id="32" type="checkbox"></td>
+            <td>A copy of a map depicting the Floating Continent as it was soon after its discovery. While extremely
+                old, it's still considered largely accurate to this day.</td>
+        </tr>
+        <tr>
+            <td>Nile-Certified Stomach Medicine</td>
+            <td><input name="itemcheck" id="33" type="checkbox"></td>
+            <td>A medicine for the stomach developed and sold independently by the Nile Trading Company. Merchants often
+                use this before business negotiations to soothe their stress-induced stomach aches.</td>
+        </tr>
+        <tr>
+            <td>Penal Colony Moonshine</td>
+            <td><input name="itemcheck" id="34" type="checkbox"></td>
+            <td>A hearty spirit created by Guards in the Penal Colony. Its production forgoes certain complicated
+                processing measures, allowing it to be cheaper than other drinks on the market.</td>
+        </tr>
+        <tr>
+            <td>Circle Railway Ticket Book</td>
+            <td><input name="itemcheck" id="35" type="checkbox"></td>
+            <td>A ticket book that is required for the Circle Railway—indispensable to those who work in Post-Vegas and
+                sightseers. Each stop will cost you one ticket.</td>
+        </tr>
+        <tr>
+            <td>Circle Railway Stamp Book</td>
+            <td><input name="itemcheck" id="36" type="checkbox"></td>
+            <td>A book that has space for stamps offered by each station on the Circle Railway. It contains slots for
+                non-existent stations, but these have plans to be built in the future.</td>
+        </tr>
+        <tr>
+            <td>Fleeting Petal Amulet</td>
+            <td><input name="itemcheck" id="37" type="checkbox"></td>
+            <td>An amulet that is considered to bring good luck. It has a design inspired by the flowers of the
+                Post-Vegas World Tree, and is popular among tourists buying gifts.</td>
+        </tr>
+        <tr>
+            <td>Workers Daily - Special Issue</td>
+            <td><input name="itemcheck" id="38" type="checkbox"></td>
+            <td>A special issue of a newspaper run by a publishing company in Post-Vegas. It contains detailed
+                information on the lack of investment capital available to Stockyard Guards.</td>
+        </tr>
+        <tr>
+            <td>Casino Chip</td>
+            <td><input name="itemcheck" id="39" type="checkbox"></td>
+            <td>A chip of the lowest denomination, used in the Post-Vegas casino. You will not be able to participate in
+                games with only this as your stake.</td>
+        </tr>
+        <tr>
+            <td>Post-Vegas Tuna</td>
+            <td><input name="itemcheck" id="40" type="checkbox"></td>
+            <td>A large tuna fish that inhabits the ocean near Post-Vegas. The fatty part of the fish is extremely
+                popular with tourists. There are some of its kind that rival a small boat in size.</td>
+        </tr>
+        <tr>
+            <td>ITO Sushi Wasabi</td>
+            <td><input name="itemcheck" id="41" type="checkbox"></td>
+            <td>A tube of wasabi paste, sourced from the riversides of the Departed Land. Its unique taste goes well
+                with sushi, but caution is advised—even a small amount can add quite the kick.</td>
+        </tr>
+        <tr>
+            <td>Kraken Ink</td>
+            <td><input name="itemcheck" id="42" type="checkbox"></td>
+            <td>A vial of commercial kraken ink, collected from the excretions of the kraken. The inherent poison in the
+                ink has been neutralized, making the product food-safe.</td>
+        </tr>
+        <tr>
+            <td>Gold Aloe</td>
+            <td><input name="itemcheck" id="43" type="checkbox"></td>
+            <td>A golden aloe plant that grows in the wastelands on the western edge of Post-Vegas. It's popular with
+                sightseers, and is often used in beauty products and sunscreen.</td>
+        </tr>
+        <tr>
+            <td>Research Village Milk</td>
+            <td><input name="itemcheck" id="44" type="checkbox"></td>
+            <td>A local specialty from the Research Village, used in various recipes. It is an essential ingredient in
+                the sweets that are currently popular in Post-Vegas.</td>
+        </tr>
+        <tr>
+            <td>Cliff Sugarcane</td>
+            <td><input name="itemcheck" id="45" type="checkbox"></td>
+            <td>A stalk of sugarcane, sourced near the Research Village's cliffs. It is commonly processed into
+                high-grade sugar, which is then used to produce the village's sweets.</td>
+        </tr>
+        <tr>
+            <td>Circle Railway Drops</td>
+            <td><input name="itemcheck" id="46" type="checkbox"></td>
+            <td>A pack of multi-colored candies, stored in a train-shaped tin. It's a popular souvenir for the Circle
+                Railway, and if you give it a shake, you can hear the sweets rattle inside.</td>
+        </tr>
+        <tr>
+            <td>Star Candy</td>
+            <td><input name="itemcheck" id="47" type="checkbox"></td>
+            <td>Crystals of sugar in the shapes of stars, enjoyed throughout generations. It takes skilled hands to form
+                the perfect star shapes.</td>
+        </tr>
+        <tr>
+            <td>Research Village Cheese</td>
+            <td><input name="itemcheck" id="48" type="checkbox"></td>
+            <td>A block of cheese that has been produced in the Research Village's dairy farms since their inception.
+                Goes well with a glass of Salvation Wine.</td>
+        </tr>
+        <tr>
+            <td>Resort Pearl (Flame Pattern)</td>
+            <td><input name="itemcheck" id="49" type="checkbox"></td>
+            <td>A rare pearl that has a unique flame-like pattern on its surface. If one were to use it as an accessory,
+                it would draw the eyes of everyone around.</td>
+        </tr>
+        <tr>
+            <td>Resort Pearl</td>
+            <td><input name="itemcheck" id="50" type="checkbox"></td>
+            <td>A unique pearl with a pale luster, cultivated by Merchants in the sea by Post-Vegas. This particular
+                shade is popular with ladies.</td>
+        </tr>
+        <tr>
+            <td>Bitter Jelly: Complete Nutrition</td>
+            <td><input name="itemcheck" id="51" type="checkbox"></td>
+            <td>A highly nourishing substance that contains all the nutrients you need for an entire day. Apparently, it
+                has a distinctive taste that cannot be described.</td>
+        </tr>
+        <tr>
+            <td>Bitter Jelly: Vitamin Boost</td>
+            <td><input name="itemcheck" id="52" type="checkbox"></td>
+            <td>A lime-flavored jelly, developed in cooperation with the Miners. It contains a day's worth of vitamins,
+                and is the frequent go-to for busy Merchants everywhere.</td>
+        </tr>
+        <tr>
+            <td>Rainbow Swallow's Nest</td>
+            <td><input name="itemcheck" id="53" type="checkbox"></td>
+            <td>A nest made by the vibrant-feathered rainbow swallow. Their nests were once over-hunted, severely
+                reducing the population of the species itself.</td>
+        </tr>
+        <tr>
+            <td>Swallow's Nest</td>
+            <td><input name="itemcheck" id="54" type="checkbox"></td>
+            <td>A nest made by a swallow, a species that inhabits Post-Vegas. It's incredibly delicious in soups, and is
+                considered a high-end ingredient.</td>
+        </tr>
+        <tr>
+            <td>Cursed Stone</td>
+            <td><input name="itemcheck" id="55" type="checkbox"></td>
+            <td>A stone that is said to drain life-force. It apparently grows redder and redder until it reaches
+                crimson—at which point the owner loses their life... All that's a lie, though—it's just a rock made of
+                obsidian.</td>
+        </tr>
+        <tr>
+            <td>Promise Braid</td>
+            <td><input name="itemcheck" id="56" type="checkbox"></td>
+            <td>A braid made out of tough, synthetic fibers. Apparently, the crews of the Frontier Vehicles would wear
+                this as a good luck charm.</td>
+        </tr>
+        <tr>
+            <td>Model Kit: Floating Continent Armaments Series - Powered Suit (1/10 Scale)</td>
+            <td><input name="itemcheck" id="57" type="checkbox"></td>
+            <td>A model kit for a powered suit. It is part of the Floating Continent Armaments Series, and is popular
+                with collectors fond of ordinance.</td>
+        </tr>
+        <tr>
+            <td>Frontier Vehicle Model</td>
+            <td><input name="itemcheck" id="58" type="checkbox"></td>
+            <td>A model of the large vehicles that were constructed during the Frontier Age. Legend has it that large
+                numbers of people would ride these through corrupted land.</td>
+        </tr>
+        <tr>
+            <td>Paradise Pill</td>
+            <td><input name="itemcheck" id="59" type="checkbox"></td>
+            <td>A pill prepared by the Merchant Union. Taking it sharpens your senses and increases your concentration.
+                However, moderation is key when taking medicines of this sort.</td>
+        </tr>
+        <tr>
+            <td>Seaside Hotel Projector</td>
+            <td><input name="itemcheck" id="60" type="checkbox"></td>
+            <td>A projector that is in every room of the Seaside Hotel. It can display media sent from video equipment.
+            </td>
+        </tr>
+        <tr>
+            <td>Resort Seafood Extract</td>
+            <td><input name="itemcheck" id="61" type="checkbox"></td>
+            <td>A stock made from boiled down seafood. It's an essential flavoring in a multitude of dishes, causing it
+                to be in high demand in other countries, too.</td>
+        </tr>
+        <tr>
+            <td>Stock Certificate: Abra Trading Company</td>
+            <td><input name="itemcheck" id="62" type="checkbox"></td>
+            <td>A stock certificate for the Post-Vegas-based Abra Trading Company. The group went under after its shares
+                were taken by the Nile Trading Company a few decades ago—which means this item doesn't offer any claim
+                to ownership.</td>
+        </tr>
+        <tr>
+            <td>Resort Fishing License</td>
+            <td><input name="itemcheck" id="63" type="checkbox"></td>
+            <td>A license that proves you have been given the right to fish by the ITO Foods group. Every fisherman
+                brings this with them, but as it's small, many end up being misplaced while at sea.</td>
+        </tr>
+        <tr>
+            <td>Dragon Tarot Card -Breath-</td>
+            <td><input name="itemcheck" id="64" type="checkbox"></td>
+            <td>A tarot card associated with the Draconic Faith. It depicts a fierce dragon bellowing out torrents of
+                flame—a sign good luck is coming your way, apparently.</td>
+        </tr>
+        <tr>
+            <td>Treasure Record of Fernando, the King of Adventurers</td>
+            <td><input name="itemcheck" id="65" type="checkbox"></td>
+            <td>A memo left by the Treasure Hunter known as the "King of Adventurers" on his deathbed. It contains
+                information on a secret treasure on the Floating Continent that he spent his entire life searching for.
+            </td>
+        </tr>
+        <tr>
+            <td>Creepy Bisque Doll</td>
+            <td><input name="itemcheck" id="66" type="checkbox"></td>
+            <td>A bisque doll that's often referred to as a cursed doll. There are endless rumors of it moving at night,
+                its hair growing, and it bleeding out of its eyes.</td>
+        </tr>
+        <tr>
+            <td>Souvenir Coin: Post-Vegas Tower</td>
+            <td><input name="itemcheck" id="67" type="checkbox"></td>
+            <td>A limited-edition coin, issued to commemorate the completion of the Post-Vegas Tower. It rarely appears
+                on the market, which has driven up its price among collectors.</td>
+        </tr>
+        <tr>
+            <td>Relic -Broken Watch-</td>
+            <td><input name="itemcheck" id="68" type="checkbox"></td>
+            <td>An ancient timepiece relic discovered in the Ocean Ruins that is broken and no longer moves. The name
+                Antoine Philippe can be seen inscribed into the rim if inspected more closely.</td>
+        </tr>
+
+    </table>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+            var storage = window.localStorage;
+            var lastUpdated = storage.getItem("ItmChkLstUdt");
+            var updated = document.getElementById("updated");
+            var checkedItemsStr = storage.getItem("chckdItmCh4");
+            let checkedItems = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,".split(',');
+            if (lastUpdated == null) {
+                updated.innerHTML = "Last Update: -";
+            } else {
+                updated.innerHTML = "Last Update:" + lastUpdated;
+            }
+            if (checkedItemsStr != null) {
+                checkedItems = checkedItemsStr.split(',');
+            }
+
+            const item = document.getElementsByName('itemcheck');
+            const removeBtn = document.getElementById('remove-btn');
+            removeBtn.addEventListener('click', removeFunc, false);
+            for (let i = 0; i < item.length; i++) {
+                item[i].addEventListener('change', valueChange);
+                if (checkedItems[i] == '1') {
+                    item[i].checked = true;
+                }
+            }
+
+            function removeFunc() {
+                for (let i = 0; i < item.length; i++) {
+                    item[i].checked = false;
+                    checkedItems[i] = '0';
+                }
+                updateDate();
+                storage.setItem("chckdItmCh4", checkedItems.join(','));
+            }
+            function updateDate() {
+                var date = new Date();
+                var updated = document.getElementById("updated");
+                updated.innerHTML = "Last Update:" + date;
+                storage.setItem("ItmChkLstUdt", date);
+            }
+            function valueChange(e) {
+                updateDate();
+                console.log(e.srcElement.id);
+                if (e.srcElement.checked) {
+                    checkedItems[Number(e.srcElement.id)] = '1';
+                }
+                else {
+                    checkedItems[Number(e.srcElement.id)] = '0';
+                }
+                storage.setItem("chckdItmCh4", checkedItems.join(','));
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
