@@ -104,7 +104,7 @@ const startGame = () => {
                 selectors.boardContainer.classList.add('flipped')
                 selectors.win.innerHTML = `
                     <span class="win-text">
-                    SEASON4 is Ongoing!<br />
+                    SYMBIOGENESIS is forever...<br />
                         You found <span class="highlight">${state.totalOnlyOnes}</span> Only-Ones!
                     </span>
                 `
