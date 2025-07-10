@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unofficial Symbio Treasure Hunting Recorder</title>
   <script>
     (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
@@ -15,16 +16,64 @@
     #map {
       height: 100vh;
     }
+
+    .image-container {
+      /* 画像を重ねるための親要素 */
+      position: relative;
+
+    }
+
+    .image-container img {
+      /* すべての画像に共通のスタイル */
+      position: absolute;
+      /* 親要素を基準に配置 */
+      top: 0%;
+      left: 0%;
+      height: fit-content;
+      object-fit: scale-down;
+      /* 画像がコンテナに収まるように調整 */
+    }
+
+    .overlay-image {
+      /* 重ねる画像に適用するスタイル */
+      z-index: 10;
+      /* 背景画像より手前に表示 */
+      /* 初期状態では非表示にする場合 */
+      /* display: none; */
+      opacity: 0;
+      /* 初期状態では完全に透明 */
+      transition: opacity 1s ease-in-out;
+      /* 2秒かけて透明度が変化するアニメーション */
+      z-index: 9999;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 1.1em;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      /* ボタンの色 */
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 
 <body>
-  <div id="map" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"></div>
+  <div class="image-container" id="imageContainer">
+    <div id="map" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"></div>
+  </div>
   <script>
     var newMarkersElement = [];
     var MarkersElement = [];
     var map = null;
-    var lastTileX=-1
+    var lastTileX = -1
     function markerClick(marker) {
 
       switch (marker.zIndex) {
@@ -103,10 +152,10 @@
         getTileUrl: function (coord, zoom) {
           zoom = zoom - 1;
           var tileRange = 1 << zoom;
-          console.log("tileRange:" +tileRange);
-          console.log("zoom:" +zoom);
-          console.log("max:" + (Math.pow(2,zoom) - 1));
-          console.log("coord:" +coord);
+          //          console.log("tileRange:" + tileRange);
+          //          console.log("zoom:" + zoom);
+          //          console.log("max:" + (Math.pow(2, zoom) - 1));
+          //          console.log("coord:" + coord);
 
           var center = map.center;
           var cp = map.getProjection().fromLatLngToPoint(center);
@@ -123,7 +172,7 @@
       });
 
 
-      map.overlayMapTypes.insertAt(0, new Grid(new google.maps.Size(500, 500)));
+      //      map.overlayMapTypes.insertAt(0, new Grid(new google.maps.Size(500, 500)));
       map.mapTypes.set('image_map', imageMap);
       var storage = window.localStorage;
       var markersStorage = storage.getItem("Markers");
@@ -154,70 +203,69 @@
 
       //クリックしたときの処理
       function markNoItem(event) {
-        //marker作成
-        
-        var marker = new google.maps.marker.AdvancedMarkerElement({
-          map,
-          position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
-          title: newMarkersElement.length + ":" + getDate() + ":" + "No Item",
-          zIndex: 0
-        });
+        console.log("click event: " + event.latLng.lat() + "," + event.latLng.lng());
+        if (event.latLng.lat() > 20.6 && event.latLng.lat() < 20.8 && event.latLng.lng() > -123 && event.latLng.lng() < -122) {
+          showBlackOverlay();
+          imgDiv = showItemOverlay('AltairHat.png', 'Altairの帽子');
+          document.body.appendChild(imgDiv);
+          buttonDiv = showButtonOverlay();
+          document.body.appendChild(buttonDiv);
 
-        newMarkersElement.push({lat:marker.position.lat, lng:marker.position.lng, title:marker.title, content:marker.content, zIndex:marker.zIndex, instance:marker});
-        // マーカークリックイベントリスナーの設定
-        marker.addListener('gmp-click', function () {
-          markerClick(marker);
-        });
+        }
+
       }
-
-      const centerControlDiv = document.createElement("div");
-      const centerControl = createSubmitButton(map);
-      centerControlDiv.appendChild(centerControl);
-      map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-
-      const rightControlDiv = document.createElement("div");
-      const playerName = playerNameButton(map);
-      rightControlDiv.appendChild(playerName);
-      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(rightControlDiv);
-
-      const bottomLeftControlDiv = document.createElement("div");
-      const clearMarker = clearMarkerButton(map);
-      bottomLeftControlDiv.appendChild(clearMarker);
-      map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(bottomLeftControlDiv);
 
       const bottomControlDiv = document.createElement("div");
       const donate = donateButton(map);
       bottomControlDiv.appendChild(donate);
       map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(bottomControlDiv);
 
-      const titleDiv = document.createElement("div");
-      const title_div = titleButton(map);
-      titleDiv.appendChild(title_div);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(titleDiv);
+      if (0) {
+        const centerControlDiv = document.createElement("div");
+        const centerControl = createSubmitButton(map);
+        centerControlDiv.appendChild(centerControl);
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 
-      const exportDiv = document.createElement("div");
-      const exportControl = exportButton(map);
-      exportDiv.appendChild(exportControl);
-      map.controls[google.maps.ControlPosition.TOP_CENTER].push(exportDiv);
+        const rightControlDiv = document.createElement("div");
+        const playerName = playerNameButton(map);
+        rightControlDiv.appendChild(playerName);
+        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(rightControlDiv);
 
-      const importDiv = document.createElement("div");
-      const importControl = importButton(map);
-      importDiv.appendChild(importControl);
-      map.controls[google.maps.ControlPosition.TOP_CENTER].push(importDiv);
+        const bottomLeftControlDiv = document.createElement("div");
+        const clearMarker = clearMarkerButton(map);
+        bottomLeftControlDiv.appendChild(clearMarker);
+        map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(bottomLeftControlDiv);
 
+
+
+        const titleDiv = document.createElement("div");
+        const title_div = titleButton(map);
+        titleDiv.appendChild(title_div);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(titleDiv);
+
+        const exportDiv = document.createElement("div");
+        const exportControl = exportButton(map);
+        exportDiv.appendChild(exportControl);
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(exportDiv);
+
+        const importDiv = document.createElement("div");
+        const importControl = importButton(map);
+        importDiv.appendChild(importControl);
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(importDiv);
+      }
       const flightPlanCoordinates = [
-    { lat: 40, lng: -20 },
-    { lat: 50, lng: -10 },
-  ];
-  const flightPath = new google.maps.Polyline({
-    path: flightPlanCoordinates,
-    geodesic: true,
-    strokeColor: "#FF0000",
-    strokeOpacity: 1.0,
-    strokeWeight: 2,
-  });
+        { lat: 40, lng: -20 },
+        { lat: 50, lng: -10 },
+      ];
+      const flightPath = new google.maps.Polyline({
+        path: flightPlanCoordinates,
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+      });
 
-  //flightPath.setMap(map);
+      //flightPath.setMap(map);
     }
 
     function getDate() {
@@ -381,17 +429,17 @@
           }
 
           newMarkersElement.forEach(item => {
-            var markerContent=null
+            var markerContent = null
             if (item.zIndex == 0) {
-            var marker = new google.maps.marker.AdvancedMarkerElement({
+              var marker = new google.maps.marker.AdvancedMarkerElement({
                 map,
                 position: new google.maps.LatLng(item.lat, item.lng),
                 title: item.title,
                 zIndex: item.zIndex
-              });              
+              });
             }
-            else{
-            var marker = new google.maps.marker.AdvancedMarkerElement({
+            else {
+              var marker = new google.maps.marker.AdvancedMarkerElement({
                 map,
                 position: new google.maps.LatLng(item.lat, item.lng),
                 title: item.title,
@@ -402,7 +450,7 @@
             var json_item = { lat: marker.position.lat, lng: marker.position.lng, title: marker.title.slice((marker.title.split(':')[0].length) + 1), type: marker.zIndex };
             json_add = JSON.parse(JSON.stringify(json_item));
             json_base.push(json_add);
-          (item.instance).setMap(null);
+            (item.instance).setMap(null);
             item.instance = null;
             marker.setMap(null);
             marker = null;
@@ -648,6 +696,160 @@
     }
     initMap();
 
+    // 半透明のオーバーレイを作成する関数
+    function showBlackOverlay() {
+      // 新しいdiv要素を作成
+      const overlay = document.createElement('div');
+
+      // オーバーレイのスタイルを設定
+      overlay.style.position = 'fixed'; // ビューポートに固定
+      overlay.style.top = '0'; // 上端から
+      overlay.style.left = '0'; // 左端から
+      overlay.style.width = '100%'; // 幅全体
+      overlay.style.height = '100%'; // 高さ全体
+      overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // 半透明の黒 (RGBAで最後の値が不透明度)
+      overlay.style.zIndex = '999'; // 他の要素の上に表示されるように高いz-indexを設定
+      overlay.style.opacity = '0'; // 初期状態では完全に透明
+      overlay.style.transition = 'opacity 1s ease-in-out';
+      overlay.id = 'blackOverlay'; // オーバーレイのIDを設定
+
+      const imageContainer = document.getElementById('imageContainer');
+      imageContainer.appendChild(overlay);
+      // オーバーレイを徐々に表示
+      setTimeout(() => {
+        overlay.style.opacity = 1;
+      }, 1); // 少し遅らせてから表示開始
+
+      return overlay; // 作成したオーバーレイ要素を返す
+    }
+
+
+    function showItemOverlay(imgPath, message) {
+      // 新しいdiv要素を作成
+      const overlay = document.createElement('div');
+
+      // オーバーレイのスタイルを設定
+      overlay.style.position = 'fixed'; // ビューポートに固定
+      overlay.style.top = '0'; // 上端から
+      overlay.style.display = 'flex'; // 左端から
+      overlay.style.justifyContent = 'center'; // 左端から
+      overlay.style.width = '100%'; // 幅全体
+      overlay.style.height = '100%'; // 高さ全体
+      overlay.style.zIndex = '9999'; // 他の要素の上に表示されるように高いz-indexを設定
+      overlay.style.opacity = '0'; // 初期状態では完全に透明
+      overlay.style.transition = 'opacity 1s ease-in-out';
+      overlay.id = 'itemOverlay'; // オーバーレイのIDを設定
+
+      // 背景画像要素を作成
+      const image = document.createElement('img');
+      image.src = "base.png";
+
+      // テキスト表示要素を作成
+      const textElement = document.createElement('div');
+      // オーバーレイのスタイルを設定
+      textElement.style.position = 'fixed'; // ビューポートに固定
+      textElement.style.top = '23%'; // 上端から
+      textElement.style.display = 'flex'; // 左端から
+      textElement.style.justifyContent = 'center'; // 左端から
+      textElement.style.width = '100%'; // 幅全体
+      textElement.style.height = '100%'; // 高さ全体
+      textElement.style.zIndex = '19999'; // 他の要素の上に表示されるように高いz-indexを設定
+      textElement.style.opacity = '0';
+      textElement.style.transition = 'opacity 1s ease-in-out';
+      textElement.id = 'textOverlay'; // テキストオーバーレイのIDを設定
+      textElement.textContent = message;
+      Object.assign(textElement.style, {
+        color: 'white',
+        fontSize: '2em',
+        fontFamily: 'sans-serif',
+        textAlign: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0)', // テキスト背景も半透明に
+        borderRadius: '10px'
+      });
+
+      const imgOverlay = document.createElement('div');
+
+      // オーバーレイのスタイルを設定
+      imgOverlay.style.position = 'fixed'; // ビューポートに固定
+      imgOverlay.style.top = '11%'; // 上端から
+      imgOverlay.style.display = 'flex'; // 左端から
+      imgOverlay.style.justifyContent = 'center'; // 左端から
+      imgOverlay.style.width = '10%'; // 幅全体
+      imgOverlay.style.height = '10%'; // 高さ全体
+      imgOverlay.style.zIndex = '29999'; // 他の要素の上に表示されるように高いz-indexを設定
+      imgOverlay.style.opacity = '0'; // 初期状態では完全に透明
+      imgOverlay.style.transition = 'opacity 1s ease-in-out';
+
+      // アイテム画像要素を作成
+      const itemImage = document.createElement('img');
+      itemImage.src = imgPath;
+
+      overlay.appendChild(image);
+      imgOverlay.appendChild(itemImage);
+
+      const imageContainer = document.getElementById('imageContainer');
+      imageContainer.appendChild(overlay);
+      imageContainer.appendChild(textElement);
+      overlay.appendChild(imgOverlay);
+      // オーバーレイを徐々に表示
+      setTimeout(() => {
+        overlay.style.opacity = 1;
+        textElement.style.opacity = 1;
+        imgOverlay.style.opacity = 1;
+      }, 500); // 少し遅らせてから表示開始
+      return overlay; // 作成したオーバーレイ要素を返す
+    }
+
+    function showButtonOverlay() {
+      // 新しいdiv要素を作成
+      const overlay = document.createElement('div');
+
+      // オーバーレイのスタイルを設定
+      overlay.style.position = 'fixed'; // ビューポートに固定
+      overlay.style.top = '94%'; // 上端から
+      overlay.style.display = 'flex'; // 左端から
+      overlay.style.justifyContent = 'center'; // 左端から
+      overlay.style.width = '100%'; // 幅全体
+      overlay.style.height = '100%'; // 高さ全体
+      overlay.style.zIndex = '99999'; // 他の要素の上に表示されるように高いz-indexを設定
+      overlay.style.opacity = '0'; // 初期状態では完全に透明
+      overlay.style.transition = 'opacity 1s ease-in-out';
+      overlay.id = 'buttonOverlay'; // オーバーレイのIDを設定
+
+      // 閉じるボタンを作成
+      const closeButton = document.createElement('span');
+      closeButton.classList.add('close-button');
+
+      // アイテム画像要素を作成
+      const buttonImage = document.createElement('img');
+      buttonImage.src = "closeButton.png";
+
+      closeButton.onclick = hideOverlay; // クリックでオーバーレイを非表示にする
+      closeButton.appendChild(buttonImage);
+
+      overlay.appendChild(closeButton);
+
+      const imageContainer = document.getElementById('imageContainer');
+      imageContainer.appendChild(overlay);
+      // オーバーレイを徐々に表示
+      setTimeout(() => {
+        overlay.style.opacity = 1;
+      }, 500); // 少し遅らせてから表示開始
+      return overlay; // 作成したオーバーレイ要素を返す
+    }
+
+    // 必要に応じて、オーバーレイを削除する関数も定義できます
+    function hideOverlay() {
+      const buttonOverlay = document.getElementById('buttonOverlay');
+      buttonOverlay.remove();
+      const itemOverlay = document.getElementById('itemOverlay');
+      itemOverlay.remove();
+      const blackOverlay = document.getElementById('blackOverlay');
+      blackOverlay.remove();
+      const textOverlay = document.getElementById('textOverlay');
+      textOverlay.remove();
+
+    }
   </script>
 </body>
 
