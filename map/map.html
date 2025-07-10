@@ -206,7 +206,7 @@
         console.log("click event: " + event.latLng.lat() + "," + event.latLng.lng());
         if (event.latLng.lat() > 20.6 && event.latLng.lat() < 20.8 && event.latLng.lng() > -123 && event.latLng.lng() < -122) {
           showBlackOverlay();
-          imgDiv = showItemOverlay('AltairHat.png', 'Altairの帽子');
+          imgDiv = showItemOverlay('AltairHat.png', 'Altairの帽子', '浮遊大陸を巡った考古学者の帽子。\n数多の遺跡の土と、太陽の匂いがする。');
           document.body.appendChild(imgDiv);
           buttonDiv = showButtonOverlay();
           document.body.appendChild(buttonDiv);
@@ -724,7 +724,7 @@
     }
 
 
-    function showItemOverlay(imgPath, message) {
+    function showItemOverlay(imgPath, message, flavorText) {
       // 新しいdiv要素を作成
       const overlay = document.createElement('div');
 
@@ -767,6 +767,30 @@
         borderRadius: '10px'
       });
 
+            // テキスト表示要素を作成
+      const flavorTextElement = document.createElement('div');
+      // オーバーレイのスタイルを設定
+      flavorTextElement.style.position = 'fixed'; // ビューポートに固定
+      flavorTextElement.style.top = '50%'; // 上端から
+      flavorTextElement.style.display = 'flex'; // 左端から
+      flavorTextElement.style.justifyContent = 'center'; // 左端から
+      flavorTextElement.style.width = '100%'; // 幅全体
+      flavorTextElement.style.height = '100%'; // 高さ全体
+      flavorTextElement.style.zIndex = '29999'; // 他の要素の上に表示されるように高いz-indexを設定
+      flavorTextElement.style.opacity = '0';
+      flavorTextElement.style.transition = 'opacity 1s ease-in-out';
+      flavorTextElement.style.whiteSpace = 'pre-line  '; // 改行を有効にする
+      flavorTextElement.id = 'flavorTextElement'; // テキストオーバーレイのIDを設定
+      flavorTextElement.textContent = flavorText;
+      Object.assign(flavorTextElement.style, {
+        color: 'white',
+        fontSize: '1.5em',
+        fontFamily: 'sans-serif',
+        textAlign: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0)', // テキスト背景も半透明に
+        borderRadius: '10px'
+      });
+
       const imgOverlay = document.createElement('div');
 
       // オーバーレイのスタイルを設定
@@ -790,11 +814,13 @@
       const imageContainer = document.getElementById('imageContainer');
       imageContainer.appendChild(overlay);
       imageContainer.appendChild(textElement);
+      imageContainer.appendChild(flavorTextElement);
       overlay.appendChild(imgOverlay);
       // オーバーレイを徐々に表示
       setTimeout(() => {
         overlay.style.opacity = 1;
         textElement.style.opacity = 1;
+        flavorTextElement.style.opacity = 1;
         imgOverlay.style.opacity = 1;
       }, 500); // 少し遅らせてから表示開始
       return overlay; // 作成したオーバーレイ要素を返す
@@ -848,7 +874,8 @@
       blackOverlay.remove();
       const textOverlay = document.getElementById('textOverlay');
       textOverlay.remove();
-
+      const flavorTextElement = document.getElementById('flavorTextElement');
+      flavorTextElement.remove();
     }
   </script>
 </body>
