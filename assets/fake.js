@@ -104,7 +104,7 @@ const startGame = () => {
                 selectors.boardContainer.classList.add('flipped')
                 selectors.win.innerHTML = `
                     <span class="win-text">
-                    SYMBIOGENESIS is forever...<br />
+                    Thanks, SYMBIOGENESIS!<br />
                         You found <span class="highlight">${state.totalOnlyOnes}</span> Only-Ones!
                     </span>
                 `
